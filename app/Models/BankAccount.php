@@ -9,6 +9,11 @@ class BankAccount extends Model
 {
     use HasFactory;
 	
+    protected $fillable = [
+        'bank_code',
+        'account',
+    ];
+	
     public function seller()
     {
         return $this->belongsTo(Seller::class);
