@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('bank_accounts', function (Blueprint $table) {
             $table->id();
+			$table->unsignedBigInteger('seller_id');
+			$table->string('bank_code');
+			$table->string('account');
             $table->timestamps();
         });
     }

@@ -8,4 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 class Seller extends Model
 {
     use HasFactory;
+	
+    protected $fillable = [
+        'secret_key',
+        'secret_iv',
+    ];
+	
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
+	
+    public function bankAccounts(){
+        return $this->hasMany(BankAccount::class);
+    }
+	
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
+	
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
