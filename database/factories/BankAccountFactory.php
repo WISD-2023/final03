@@ -17,7 +17,8 @@ class BankAccountFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'bank_code' => mt_rand(100,999),
+            'account' => mt_rand(1000000000,2000000000),
         ];
     }
 }

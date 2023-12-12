@@ -17,7 +17,8 @@ class CommentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'description' => $this->faker->sentence,
+            'like_score' => mt_rand(0,5)
         ];
     }
 }

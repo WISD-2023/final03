@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class SellerFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'secret_key' => Str::random(32),
+            'secret_iv' => Str::random(16),
         ];
     }
 }

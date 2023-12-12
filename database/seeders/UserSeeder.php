@@ -3,11 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\Seller;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class SellerSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,10 +14,9 @@ class SellerSeeder extends Seeder
     public function run(): void
     {
         //
-		User::all()->skip(0)->take(5)->each(function($user){
-			Seller::factory(1)->create([
-				'member_id' => $user->id
-			]);
-		});
+		User::factory(1)->create([
+			'email' => 'user@localhost'
+		]);
+		User::factory(9)->create();
     }
 }

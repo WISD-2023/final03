@@ -17,7 +17,7 @@ class CartItemFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'amount' => mt_rand(1,10)
         ];
     }
 }
