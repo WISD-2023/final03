@@ -1,6 +1,8 @@
 @echo off
 echo init install repo
 composer install
-cp .\.env.example .env
+copy .\.env.example .env /y
 php artisan key:generate
 npm i
+npm run build
+exit
