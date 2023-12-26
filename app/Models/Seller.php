@@ -18,10 +18,6 @@ class Seller extends Model
         return $this->hasMany(Order::class);
     }
 	
-    public function bankAccounts(){
-        return $this->hasMany(BankAccount::class);
-    }
-	
     public function products(){
         return $this->hasMany(Product::class);
     }

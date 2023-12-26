@@ -32,9 +32,6 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class
         );
         $this->call(
-            BankAccountSeeder::class
-        );
-        $this->call(
             OrderSeeder::class
         );
         $this->call(
