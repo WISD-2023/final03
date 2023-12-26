@@ -18,8 +18,10 @@ class SellerFactory extends Factory
     public function definition(): array
     {
         return [
-            'secret_key' => Str::random(32),
-            'secret_iv' => Str::random(16),
+            //'secret_key' => Str::random(32),
+            //'secret_iv' => Str::random(16),
+            'secret_key' => "A8bckaUs0cQ8WpYqwZXkOj03lWFUQrxw",
+            'secret_iv' => "CzEEgu89GoaKZPLP",
         ];
     }
 }
