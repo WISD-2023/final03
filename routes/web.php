@@ -18,20 +18,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ProductController::class, 'index'])->name('products.index');
 
-Route::resource('/users/cart_items', CartItemController::class)->middleware(['auth', 'verified']);
-
-
-Route::prefix('users')->group(function () {
-	Route::get('/', function () {
-		return view('dashboard');
-	})->name('users');
-	
-    Route::resource('/cart_items', CartItemController::class);
-	
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-})->middleware(['auth', 'verified']);
-
+Route::middleware('auth')->group(function () {
+	Route::prefix('users')->group(function () {
+		Route::get('/', function () {
+			return view('dashboard');
+		})->name('users.index');
+		
+		Route::resource('/cart_items', CartItemController::class);
+		
+		Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+		Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+		Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+	});
+});
 
 require __DIR__.'/auth.php';

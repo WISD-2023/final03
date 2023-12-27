@@ -11,7 +11,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{{route('products.index')}}">所有商品</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">會員主頁</a></li>
+                        <li><a class="dropdown-item" href="{{route('users.index')}}">會員主頁</a></li>
                         <li><a class="dropdown-item" href="#!">賣家主頁</a></li>
                     </ul>
                 </li>

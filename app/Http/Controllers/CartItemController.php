@@ -14,7 +14,10 @@ class CartItemController extends Controller
      */
     public function index()
     {
-        //
+		$data = [
+			'cart_items'=>auth()->user()->cartItems()
+		];
+        return view('cart_items.index', $data);
     }
 
     /**

@@ -5,15 +5,18 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('users') }}">
+                    <a href="{{ route('users.index') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('users')" :active="request()->routeIs('users')">
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                         {{ __('會員主頁') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('cart_items.index')" :active="request()->routeIs('cart_items.index')">
+                        {{ __('購物車') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -35,7 +38,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('個人設定') }}
+                            {{ __('個人檔案') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -67,8 +70,11 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('users')" :active="request()->routeIs('users')">
+            <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                 {{ __('會員主頁') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('cart_items.index')" :active="request()->routeIs('cart_items.index')">
+                {{ __('購物車') }}
             </x-responsive-nav-link>
         </div>
 
@@ -81,7 +87,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('個人設定') }}
+                    {{ __('個人檔案') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
