@@ -15,7 +15,7 @@ class CartItemController extends Controller
     public function index()
     {
 		$data = [
-			'cart_items'=>auth()->user()->cartItems()
+			'cart_items'=>auth()->user()->cartItems()->get()
 		];
         return view('cart_items.index', $data);
     }
@@ -74,6 +74,10 @@ class CartItemController extends Controller
     public function update(UpdateCartItemRequest $request, CartItem $cartItem)
     {
         //
+		$this->authorize('update', $cartItem);
+		
+		$cartItem->update($request->all());
+		return redirect()->route('cart_items.index');
     }
 
     /**
@@ -82,5 +86,9 @@ class CartItemController extends Controller
     public function destroy(CartItem $cartItem)
     {
         //
+		$this->authorize('update', $cartItem);
+		
+		$cartItem->delete();
+		return redirect()->route('cart_items.index');
     }
 }
