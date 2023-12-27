@@ -18,10 +18,10 @@ class CommentSeeder extends Seeder
 		Product::all()->each(function($product){
 			Comment::factory(5)->create([
 				'product_id' => $product->id,
-				'member_id' => function () use ($product) {
+				'user_id' => function () use ($product) {
 					$result = User::inRandomOrder()->first();
 					
-					while($product->seller->member_id == $result->id){
+					while($product->seller->user_id == $result->id){
 						$result = User::inRandomOrder()->first();
 					}
 					

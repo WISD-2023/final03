@@ -13,7 +13,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+		$cartItemsAmount = (auth()->user())?auth()->user()->cartItems()->count():0;
+
+		$data = [
+			'products'=>$products,
+			'cart_items_amount'=>$cartItemsAmount
+		];
+		return view('products.index', $data);
     }
 
     /**
