@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('sellers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('member_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('secret_key');
             $table->string('secret_iv');
             $table->timestamps();

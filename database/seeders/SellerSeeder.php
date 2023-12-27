@@ -17,7 +17,7 @@ class SellerSeeder extends Seeder
         //
 		User::all()->skip(0)->take(5)->each(function($user){
 			Seller::factory(1)->create([
-				'member_id' => $user->id
+				'user_id' => $user->id
 			]);
 		});
     }

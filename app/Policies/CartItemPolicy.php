@@ -38,6 +38,7 @@ class CartItemPolicy
     public function update(User $user, CartItem $cartItem): bool
     {
         //
+		return $cartItem->user()->is($user);
     }
 
     /**
