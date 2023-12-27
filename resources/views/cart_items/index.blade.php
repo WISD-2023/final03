@@ -13,6 +13,9 @@
 			
 			if(element.value && element.value > 0){
 				$(element).parents('tr[data-id]').find('form.update input[name="amount"]').val(element.value);
+				
+				let $ele = $(element).parents('tr[data-id]').find('td[data-price]');
+				$ele.text("$"+$ele.data('price')*element.value);
 			}
 		}
 	</script>
@@ -38,7 +41,7 @@
 							  <td><img src="{{$cart_item->product->photo_url}}" width="64"></td>
 							  <td>{{$cart_item->product->name}}</td>
 							  <td><input style="width:100px;" type="number" onchange="onCartChange(this, true);" onkeyup="onCartChange(this, false);" min="1" value="{{$cart_item->amount}}" /></td>
-							  <td>${{$cart_item->product->price * $cart_item->amount}}</td>
+							  <td data-price="{{$cart_item->product->price}}">${{$cart_item->product->price * $cart_item->amount}}</td>
 							  <td>
 								<form class="update d-inline-block" action="{{route('cart_items.update',['cart_item'=>$cart_item->id])}}" method="post">
 									@csrf
