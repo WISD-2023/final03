@@ -5,6 +5,19 @@
         </h2>
     </x-slot>
 	<script>
+		$(function(){
+			onCountTotal();
+		});
+		
+		function onCountTotal(){
+			let total = 0;
+			$('table tbody td[data-price]').each(function(){
+				let money = parseInt($(this).text().replaceAll('$',''));
+				total+=money;
+			});
+
+			$('table tfoot th[data-total]').text('$'+total);
+		}
 		function onCartChange(element, flag){
 			if(flag && !element.value || !element.value || element.value < 1){
 				element.value = 1;
@@ -16,6 +29,8 @@
 				
 				let $ele = $(element).parents('tr[data-id]').find('td[data-price]');
 				$ele.text("$"+$ele.data('price')*element.value);
+				
+				onCountTotal();
 			}
 		}
 	</script>
@@ -58,6 +73,16 @@
 							</tr>
 						@endforeach
 					  </tbody>
+					  <tfoot>
+						<tr>
+						  <th scope="col"></th>
+						  <th scope="col"></th>
+						  <th scope="col"></th>
+						  <th scope="col">小計</th>
+						  <th data-total scope="col">$0</th>
+						  <th scope="col"></th>
+						</tr>
+					  </tfoot>
 					</table>
                 </div>
             </div>
