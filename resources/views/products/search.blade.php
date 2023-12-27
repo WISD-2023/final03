@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-		@section('page-title', '首頁 - 多方位購物網站')
+		@section('page-title', '搜尋結果 - 多方位購物網站')
 		@include('products.layouts.header')
     </head>
     <body>
 		@section('nav-title', '多方位購物網站')
-		@section('nav-type', '所有商品')
+		@section('nav-type', '商品 '. $search .' 的搜尋結果')
 		@include('products.layouts.navigation')
         <!-- Section-->
         <section class="py-5">

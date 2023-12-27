@@ -15,6 +15,10 @@
                         <li><a class="dropdown-item" href="#!">賣家主頁</a></li>
                     </ul>
                 </li>
+				<form action="{{route('products.search')}}" method="get" class="nav-item">
+					<input class="form-control d-inline-block w-75" name="search" placeholder="搜尋..." value="{{$search ?? ''}}" />
+					<button class="btn btn-outline-dark" type="submit">搜尋</button>
+				</form>
             </ul>
             <form class="d-flex">
                 <a class="btn btn-outline-dark" href="{{route('cart_items.index')}}">
@@ -31,7 +35,7 @@
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
             <h1 class="display-4 fw-bolder">@yield('nav-title')</h1>
-            <p class="lead fw-normal text-white-50 mb-0">所有商品</p>
+            <p class="lead fw-normal text-white-50 mb-0">@yield('nav-type')</p>
         </div>
     </div>
 </header>

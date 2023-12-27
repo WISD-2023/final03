@@ -80,7 +80,7 @@
 						  <th scope="col"></th>
 						  <th scope="col">小計</th>
 						  <th data-total scope="col">$0</th>
-						  <th scope="col"></th>
+						  <th scope="col"><a class="btn btn-success" href="#">結帳</a></th>
 						</tr>
 					  </tfoot>
 					</table>
