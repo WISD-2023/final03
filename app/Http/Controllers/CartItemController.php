@@ -17,7 +17,7 @@ class CartItemController extends Controller
 		$data = [
 			'cart_items'=>auth()->user()->cartItems()->get()
 		];
-        return view('cart_items.index', $data);
+        return view('users.cart_items.index', $data);
     }
 
     /**
@@ -77,7 +77,7 @@ class CartItemController extends Controller
 		$this->authorize('update', $cartItem);
 		
 		$cartItem->update($request->all());
-		return redirect()->route('cart_items.index');
+		return redirect()->route('users.cart_items.index');
     }
 
     /**
@@ -89,7 +89,7 @@ class CartItemController extends Controller
 		$this->authorize('update', $cartItem);
 		
 		$cartItem->delete();
-		return redirect()->route('cart_items.index');
+		return redirect()->route('users.cart_items.index');
 
         // // 在這裡加入刪除購物車商品的邏輯
         // $cart_item->delete();
