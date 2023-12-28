@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,18 +30,20 @@ Route::get('sellers/orders', [SellerOrderController::class, 'index'])->name('sel
 
 
 Route::middleware('auth')->group(function () {
-	Route::prefix('users')->group(function () {
+	Route::name("users.")->prefix('users')->group(function () {
 		Route::get('/', function () {
 			return view('dashboard');
-		})->name('users.index');
+		})->name('index');
 		
 		Route::resource('/cart_items', CartItemController::class);
+		Route::resource('/orders', OrderController::class);
 		
 		Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 		Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 		Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 		// 2-6-13
+		Route::patch('/{user}/seller', [UserController::class, 'seller_update'])->name('seller');
 		Route::patch('/{user}/seller', [UserController::class, 'seller_update'])->name('users.seller');
 		// 2-6-19
 		Route::delete('/cart_items/{cart_item}', [CartItemController::class, 'destrsoy'])->name('users.cart_items.destroy');

@@ -24,7 +24,7 @@
             </ul>
             <form class="d-flex">
 				@auth
-					<a class="btn btn-outline-dark" href="{{route('cart_items.index')}}">
+					<a class="btn btn-outline-dark" href="{{route('users.cart_items.index')}}">
 						<i class="bi-cart-fill me-1"></i>
 						購物車
 						<span class="badge bg-dark text-white ms-1 rounded-pill">{{$cart_items_amount}}</span>
