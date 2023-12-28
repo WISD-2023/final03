@@ -9,6 +9,10 @@ class Order extends Model
 {
     use HasFactory;
 	
+    protected $fillable = [
+        'status',
+    ];
+	
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -17,5 +21,14 @@ class Order extends Model
     public function orderDetails()
     {
         return $this->hasMany(OrderDetail::class);
+    }
+	
+    // 連鎖刪除
+	// 刪除其關係資料表之資料
+    protected static function booted () {
+        static::deleting(function(Order $order) { // before delete() method call this
+             $order->orderDetails()->delete();
+             // do the rest of the cleanup...
+        });
     }
 }

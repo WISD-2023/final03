@@ -16,7 +16,7 @@ class OrderController extends Controller
     public function index()
     {
         //
-		$orders = auth()->user()->orders()->get();
+		$orders = auth()->user()->orders()->where('status','>=','0')->get();
 		
 		$data = [
 			'orders' => $orders
@@ -83,6 +83,10 @@ class OrderController extends Controller
     public function update(UpdateOrderRequest $request, Order $order)
     {
         //
+		$this->authorize('update', $order);
+		
+		$order->update(['status'=>'-1']);
+		return redirect()->route('users.orders.index');
     }
 
     /**
@@ -90,6 +94,6 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+		//
     }
 }
