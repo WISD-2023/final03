@@ -16,6 +16,13 @@ class OrderController extends Controller
     public function index()
     {
         //
+		$orders = auth()->user()->orders()->get();
+		
+		$data = [
+			'orders' => $orders
+		];
+		
+		return view('users.orders.index', $data);
     }
 
     /**
