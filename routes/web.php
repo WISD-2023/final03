@@ -52,7 +52,6 @@ Route::middleware('auth')->group(function () {
 		// 2-6-13
 		Route::patch('/{user}/seller', [UserController::class, 'seller_update'])->name('seller');
 		// 2-6-19
-		Route::delete('/cart_items/{cart_item}', [CartItemController::class, 'destrsoy'])->name('cart_items.destroy');
 		// 2-6-20
 		Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
 	});
