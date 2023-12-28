@@ -1,70 +1,83 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 開發人員手冊
+- 一個學期下來不到四個月，可能會忘記或是不熟的地方為了降低錯誤率以下為本專案如果需要引用或是參考的手冊
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 恢復或初始專案
+1. 安裝 composer.json 依賴
+```
+>$ composer install
+```
+2. 複製環境檔
+    - 注意請根據你的環境去下複製指令
+    - 注意是否有在 repo 跟目錄底下做操作
+    ```
+    - cmder, macos, wsl(Windows Subsystem for Linux), git bash
+    >$ cp .env.example .env
 
-## About Laravel
+    - windows cmd
+    >$ copy .env.example .env
+    ```
+3. 產生環境檔 - APP_KEY
+```
+>$ php artisan key:generate
+```
+4. 安裝 package.json 依賴
+```
+>$ npm i or npm install
+```
+5. 執行前端靜態檔案 vite 建置
+```
+>$ npm run build
+```
+<!-- 
+- Tips: 如果常常修改前端可以使用
+npm run dev
+ -->
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+6. project 建立 SQL Database (需要修改者修改 .env 即可，除非你不會修改...)
+```
+// 資料庫需要先建置的相關資訊
+- 資料表名稱: final03
+- 資料表格是: utf8mb4_unicode_ci
+- 資料庫port: 33060
+// 需要有此使用者
+- 資料庫帳號: root
+- 資料庫密碼: root
+// 如果都確定資料庫建設無誤再打此指令，建立專案所需要的資料表
+>$ php artisan migrate
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+7. (可選)放入模擬資料
+```
+>$ php artisan db:seed
+```
 
 
-## Theme
-https://startbootstrap.com/template/shop-homepage
+## 提取(git pull)專案新的提交
+1. 提取最新的提交程式碼
+```
+>$ git pull
+```
+
+2. (檢查)更新資料表是否新增修改刪除
+```
+>$ php artisan migrate:refresh
+```
+
+3. (可選)放入模擬資料
+```
+>$ php artisan db:seed
+```
+
+4. 執行前端靜態檔案 vite 建置
+```
+>$ npm run build
+```
+
+<!-- 
+- Tips: 如果常常修改前端可以使用
+npm run dev
+ -->
+
+# 常見問題
+1. 在 ``8317bfef`` 之前都有 init.bat 與  git_pull.bat 為甚麼後面都沒有了?
+A: 由於批次檔執行的時候會遺漏操作，因沒有時間排查所以用 README.md 來說明專案如何使用
