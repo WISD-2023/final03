@@ -12,7 +12,7 @@
                         <li><a class="dropdown-item" href="{{route('products.index')}}">所有商品</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="{{route('users.index')}}">會員主頁</a></li>
-                        @if(auth()->user()->seller()->get()->count() > 0)
+                        @if(auth()->user() != null && auth()->user()->seller()->get()->count() > 0)
 							<li><a class="dropdown-item" href="#!">賣家主頁</a></li>
 						@endif
                     </ul>

@@ -46,6 +46,13 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         //
+		$cartItemsAmount = (auth()->user())?auth()->user()->cartItems()->count():0;
+		$data = [
+			'product'=>$product,
+			'cart_items_amount'=>$cartItemsAmount
+		];
+		
+		return view('products.show', $data);
     }
 
     /**
