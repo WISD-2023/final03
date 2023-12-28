@@ -20,7 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
 Route::resource('/products', ProductController::class)->except(['index']);
+// 2-6-14
 Route::post('/products/{product}/comment', [CommentController::class, 'store'])->name('products.comment.update');
+// 2-6-15
+Route::get('products/{product}/approx', [ProductController::class, 'approx'])->name('products.approx');
+
 
 Route::middleware('auth')->group(function () {
 	Route::prefix('users')->group(function () {
