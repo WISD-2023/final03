@@ -18,7 +18,7 @@
                     </ul>
                 </li>
 				<form action="{{route('products.search')}}" method="get" class="nav-item">
-					<input class="form-control d-inline-block w-75" name="search" placeholder="搜尋..." value="{{$search ?? ''}}" />
+					<input class="form-control d-inline-block w-75" name="search" placeholder="搜尋..." value="{{$search ?? ''}}" required />
 					<button class="btn btn-outline-dark" type="submit">搜尋</button>
 				</form>
             </ul>

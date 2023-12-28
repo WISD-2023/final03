@@ -24,7 +24,7 @@ class ProductFactory extends Factory
             'amount' => mt_rand(2000,15000),
             'format' => $arr[mt_rand(0,5)],
             'price' => mt_rand(5,2000),
-            'is_diaplay' => rand(0,1),
+            'is_display' => rand(0,1),
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
@@ -14,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::where('is_display','1')->get();
 		$cartItemsAmount = (auth()->user())?auth()->user()->cartItems()->count():0;
 
 		$data = [
@@ -46,13 +47,42 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         //
-		$cartItemsAmount = (auth()->user())?auth()->user()->cartItems()->count():0;
-		$data = [
-			'product'=>$product,
-			'cart_items_amount'=>$cartItemsAmount
-		];
-		
-		return view('products.show', $data);
+		if($product->is_display){
+			$cartItemsAmount = (auth()->user())?auth()->user()->cartItems()->count():0;
+			$canLeaveComment = false;
+			
+			if(auth()->user()){
+				$ordersCount = 0;
+				$commentsCount = 0;
+				
+				foreach($product->orderDetails()->get() as $orderDetail){
+					if($orderDetail->order->user->id == auth()->user()->id){
+						$ordersCount++;
+					}
+				}
+				
+				foreach($product->comments()->get() as $comment){
+					if($comment->user->id == auth()->user()->id){
+						$commentsCount++;
+					}
+				}
+				
+				// 如果完成訂單數大於留言數，則可以留言
+				if($ordersCount > $commentsCount){
+					$canLeaveComment = true;
+				}
+			}
+			
+			$data = [
+				'product'=>$product,
+				'cart_items_amount'=>$cartItemsAmount,
+				'canLeaveComment'=>$canLeaveComment
+			];
+			
+			return view('products.show', $data);
+		}
+		else
+			return redirect()->route('products.index');
     }
 
     /**
@@ -88,7 +118,7 @@ class ProductController extends Controller
 		$cartItemsAmount = (auth()->user())?auth()->user()->cartItems()->count():0;
 
 		$data = [
-			'products'=>Product::where('name','like', '%'.$request->search.'%')->get(),
+			'products'=>Product::where('is_display','1')->where('name','like', '%'.$request->search.'%')->get(),
 			'cart_items_amount'=>$cartItemsAmount,
 			'search'=>$request->search
 		];

@@ -21,7 +21,7 @@ return new class extends Migration
 			$table->integer('amount');
 			$table->string('format');
 			$table->integer('price');
-			$table->boolean('is_diaplay');
+			$table->boolean('is_display');
             $table->timestamps();
         });
     }
