@@ -31,6 +31,8 @@ Route::get('sellers/orders', [SellerOrderController::class, 'index'])->name('sel
 Route::get('sellers/orders/income', [SellerOrderController::class, 'income_index'])->name('sellers.orders.income.index');
 // 2-7-3
 Route::get('sellers/orders/{order}', [OrderController::class, 'show'])->name('sellers.orders.show');
+// 2-7-4
+Route::get('sellers/products', [ProductController::class, 'index'])->name('sellers.products.index');
 
 Route::middleware('auth')->group(function () {
 	Route::name("users.")->prefix('users')->group(function () {
