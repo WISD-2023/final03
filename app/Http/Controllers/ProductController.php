@@ -125,4 +125,16 @@ class ProductController extends Controller
 
 		return view('products.search', $data);
     }
+
+    public function approx(Product $product)
+    {
+        // // 在這裡加入顯示近似商品列表及價格的邏輯
+        // // 可以使用 Eloquent 或其他方法獲取近似商品的資料
+
+        // $approxProducts = $product->getApproxProducts(); // 這只是一個假設的方法，實際使用時應該根據你的業務邏輯進行實現
+
+        // // 顯示近似商品列表及價格的 view
+        // return view('products.approx', compact('approxProducts'));
+        return view('products.approx');
+    }
 }

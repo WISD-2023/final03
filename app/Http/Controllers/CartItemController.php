@@ -90,5 +90,12 @@ class CartItemController extends Controller
 		
 		$cartItem->delete();
 		return redirect()->route('cart_items.index');
+
+        // // 在這裡加入刪除購物車商品的邏輯
+        // $cart_item->delete();
+
+        // // 可以在這裡加入刪除成功的訊息，這裡使用 Laravel 的 with 方法，需要在相應的 view 中顯示
+        // return redirect()->back()->with('success', '商品已從購物車中刪除');
+        // return view('userss.cart_items.destroy');
     }
 }
