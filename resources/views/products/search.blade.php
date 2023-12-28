@@ -28,7 +28,7 @@
 								</div>
 								<!-- Product actions-->
 								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-									<form action="{{route('cart_items.store')}}" method="post">
+									<form action="{{route('users.cart_items.store')}}" method="post">
 										@csrf
 										@method('POST')
 										<input name="product" value="{{$product->id}}" type="hidden" />

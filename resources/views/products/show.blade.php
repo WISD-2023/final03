@@ -44,7 +44,7 @@
 								<div class="pt-2 pb-2 pl-2 pr-4">
 									<div class="row">
 										<div class="col">
-											<form action="{{route('cart_items.store')}}" method="post">
+											<form action="{{route('users.cart_items.store')}}" method="post">
 												@csrf
 												@method('POST')
 												<input name="product" value="{{$product->id}}" type="hidden" />
@@ -72,6 +72,7 @@
 					</div>
 					
 					@if($canLeaveComment)
+						<!-- 2-6-14 -->
 						<!-- 曾經購買過的才能評論 -->
 						<div class="container w-100 mt-2">
 							<div><h3>留下你的評論</h3></div>

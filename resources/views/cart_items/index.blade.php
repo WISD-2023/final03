@@ -58,13 +58,13 @@
 							  <td><input style="width:100px;" type="number" onchange="onCartChange(this, true);" onkeyup="onCartChange(this, false);" min="1" value="{{$cart_item->amount}}" /></td>
 							  <td data-price="{{$cart_item->product->price}}">${{$cart_item->product->price * $cart_item->amount}}</td>
 							  <td>
-								<form class="update d-inline-block" action="{{route('cart_items.update',['cart_item'=>$cart_item->id])}}" method="post">
+								<form class="update d-inline-block" action="{{route('users.cart_items.update',['cart_item'=>$cart_item->id])}}" method="post">
 									@csrf
 									@method('PATCH')
 									<input name="amount" value="{{$cart_item->amount}}" type="hidden">
 									<button class="btn btn-success" type="submit">更新</button>
 								</form>
-								<form class="delete d-inline-block" action="{{route('cart_items.destroy',['cart_item'=>$cart_item->id])}}" method="post">
+								<form class="delete d-inline-block" action="{{route('users.cart_items.destroy',['cart_item'=>$cart_item->id])}}" method="post">
 									@csrf
 									@method('DELETE')
 									<button class="btn btn-danger" type="submit">刪除</button>
