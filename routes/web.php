@@ -24,6 +24,8 @@ Route::resource('/products', ProductController::class)->except(['index']);
 Route::post('/products/{product}/comment', [CommentController::class, 'store'])->name('products.comment.update');
 // 2-6-15
 Route::get('products/{product}/approx', [ProductController::class, 'approx'])->name('products.approx');
+// 2-7-1
+Route::get('sellers/orders', [SellerOrderController::class, 'index'])->name('sellers.orders');
 
 
 Route::middleware('auth')->group(function () {

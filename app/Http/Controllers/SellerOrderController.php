@@ -11,7 +11,11 @@ class SellerOrderController extends Controller
      */
     public function index()
     {
-        //
+        //顯示所有訂單
+        // 在這裡加入顯示所有訂單的邏輯
+        $orders = Order::where('seller_id', auth()->user()->id)->get();
+        return view('sellers.orders.index', compact('orders'));
+
     }
 
     /**
