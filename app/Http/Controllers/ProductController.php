@@ -135,6 +135,6 @@ class ProductController extends Controller
 
         // // 顯示近似商品列表及價格的 view
         // return view('products.approx', compact('approxProducts'));
-        retuen view('products.approx');s
+        return view('products.approx');
     }
 }
