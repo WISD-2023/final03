@@ -39,7 +39,7 @@ Route::get('sellers/products', [ProductController::class, 'index'])->name('selle
 Route::middleware('auth')->group(function () {
 	Route::name("users.")->prefix('users')->group(function () {
 		Route::get('/', function () {
-			return view('dashboard');
+			return view('users.index');
 		})->name('index');
 		
 		
