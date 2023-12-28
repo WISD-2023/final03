@@ -27,6 +27,8 @@ Route::post('/products/{product}/comment', [CommentController::class, 'store'])-
 Route::get('products/{product}/approx', [ProductController::class, 'approx'])->name('products.approx');
 // 2-7-1
 Route::get('sellers/orders', [SellerOrderController::class, 'index'])->name('sellers.orders');
+// 2-7-2
+Route::get('sellers/orders/income', [SellerOrderController::class, 'income_index'])->name('sellers.orders.income.index');
 
 
 Route::middleware('auth')->group(function () {
