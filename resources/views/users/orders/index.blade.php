@@ -27,7 +27,7 @@
 							  <th>{{$order->updated_at}}</th>
 							  <td>
 								<a class="btn btn-success" href="{{route('users.orders.show', ['order'=>$order->id])}}">檢視明細</a>
-								<form class="d-inline-block" action="{{route('users.orders.destroy', ['order'=>$order->id])}}" method="post">
+								<form class="d-inline-block" onsubmit="return confirm('確定取消訂單嗎？');" action="{{route('users.orders.destroy', ['order'=>$order->id])}}" method="post">
 									@csrf
 									@method('DELETE')
 									<button class="btn btn-danger" type="submit" @if($order->status) disabled @endif >取消訂單</button>

@@ -64,7 +64,7 @@
 									<input name="amount" value="{{$cart_item->amount}}" type="hidden">
 									<button class="btn btn-success" type="submit">更新</button>
 								</form>
-								<form class="delete d-inline-block" action="{{route('users.cart_items.destroy',['cart_item'=>$cart_item->id])}}" method="post">
+								<form class="delete d-inline-block" onsubmit="return confirm('確定刪除？');" action="{{route('users.cart_items.destroy',['cart_item'=>$cart_item->id])}}" method="post">
 									@csrf
 									@method('DELETE')
 									<button class="btn btn-danger" type="submit">刪除</button>
