@@ -5,6 +5,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\SellerOrderController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +27,14 @@ Route::resource('/products', ProductController::class)->except(['index']);
 Route::post('/products/{product}/comment', [CommentController::class, 'store'])->name('products.comment.update');
 // 2-6-15
 Route::get('products/{product}/approx', [ProductController::class, 'approx'])->name('products.approx');
-
+// 2-7-1
+Route::get('sellers/orders', [SellerOrderController::class, 'index'])->name('sellers.orders');
+// 2-7-2
+Route::get('sellers/orders/income', [SellerOrderController::class, 'income_index'])->name('sellers.orders.income.index');
+// 2-7-3
+Route::get('sellers/orders/{order}', [OrderController::class, 'show'])->name('sellers.orders.show');
+// 2-7-4
+Route::get('sellers/products', [ProductController::class, 'index'])->name('sellers.products.index');
 
 Route::middleware('auth')->group(function () {
 	Route::name("users.")->prefix('users')->group(function () {
@@ -42,6 +51,12 @@ Route::middleware('auth')->group(function () {
 
 		// 2-6-13
 		Route::patch('/{user}/seller', [UserController::class, 'seller_update'])->name('seller');
+		Route::patch('/{user}/seller', [UserController::class, 'seller_update'])->name('users.seller');
+		// 2-6-19
+		Route::delete('/cart_items/{cart_item}', [CartItemController::class, 'destrsoy'])->name('users.cart_items.destroy');
+		// 2-6-20
+		Route::get('users/orders/create', [OrderController::class, 'create'])->name('users.orders.create');
+		Route::post('users/orders', [OrderController::class, 'store'])->name('users.orders.store');
 	});
 });
 

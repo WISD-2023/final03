@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Order;
 
 class SellerOrderController extends Controller
 {
@@ -11,7 +12,19 @@ class SellerOrderController extends Controller
      */
     public function index()
     {
-        //
+        //顯示所有訂單
+        // 在這裡加入顯示所有訂單的邏輯
+        $orders = Order::where('seller_id', auth()->user()->id)->get();
+        return view('sellers.orders.index', compact('orders'));
+
+    }
+
+    public function income_index()
+    {
+        // 在這裡加入顯示所有訂單收入及總和的邏輯
+        $orders = Order::where('seller_id', auth()->user()->id)->get();
+        $totalIncome = $orders->sum('total_amount'); // 假設 total_amount 是訂單金額的欄位
+        return view('sellers.orders.income.index', compact('orders', 'totalIncome'));
     }
 
     /**

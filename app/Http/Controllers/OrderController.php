@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\OrderItem;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 
@@ -28,15 +30,30 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        // 在這裡加入顯示訂單相關資訊介面的邏輯
+        return view('users.orders.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreOrderRequest $request)
+    public function store(Request $request)
     {
-        //
+        // 在這裡加入驗證資料、儲存訂單相關資料的邏輯
+
+        $order = Order::create([
+            // 訂單相關資料
+        ]);
+                foreach ($request->input('cart_items') as $cart_item) {
+            OrderItem::create([
+                'order_id' => $order->id,
+                'product_id' => $cart_item['product_id'],
+                'quantity' => $cart_item['quantity'],
+                // 其他訂單項目相關資料
+            ]);
+        }
+                // 可以在這裡加入重新導向到第三方金流平台的邏輯，這裡使用 Laravel 的 redirect 方法
+        return redirect()->route('users.orders.checkout', ['order' => $order->id]);
     }
 
     /**

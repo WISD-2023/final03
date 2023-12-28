@@ -23,6 +23,10 @@ class ProductController extends Controller
 			'cart_items_amount'=>$cartItemsAmount
 		];
 		return view('products.index', $data);
+
+        // // 在這裡加入顯示商品列表的邏輯
+        // $products = Product::where('seller_id', auth()->user()->id)->get();
+        // return view('sellers.products.index', compact('products'));
     }
 
     /**
