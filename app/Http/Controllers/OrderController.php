@@ -92,8 +92,18 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         //
+		$orderStatus = '';
+		
+		switch($order->status){
+			case '1':
+				$orderStatus = ' • 已完成';break;
+			case '-1':
+				$orderStatus = ' • 已取消';break;
+		}
+		
 		$data = [
-			'order' => $order
+			'order' => $order,
+			'orderStatus' => $orderStatus
 		];
 		
 		return view('users.orders.show', $data);
