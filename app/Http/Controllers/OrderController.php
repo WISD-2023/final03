@@ -24,6 +24,36 @@ class OrderController extends Controller
 		
 		return view('users.orders.index', $data);
     }
+	
+    /**
+     * Display a listing of the resource.
+     */
+    public function done_index()
+    {
+        //
+		$orders = auth()->user()->orders()->where('status','1')->get();
+		
+		$data = [
+			'orders' => $orders
+		];
+		
+		return view('users.orders.done', $data);
+    }
+	
+    /**
+     * Display a listing of the resource.
+     */
+    public function cancel_index()
+    {
+        //
+		$orders = auth()->user()->orders()->where('status','-1')->get();
+		
+		$data = [
+			'orders' => $orders
+		];
+		
+		return view('users.orders.cancel', $data);
+    }
 
     /**
      * Show the form for creating a new resource.
