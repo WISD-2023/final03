@@ -13,6 +13,7 @@
 						<tr>
 						  <th scope="col">訂單序號</th>
 						  <th scope="col">商品數</th>
+						  <th scope="col">狀態</th>
 						  <th scope="col">更新日期</th>
 						  <th scope="col">操作</th>
 						</tr>
@@ -22,8 +23,16 @@
 							<tr>
 							  <th scope="row">{{$order->no}}</th>
 							  <th>{{$order->orderDetails()->count()}}</th>
+							  <th>{{($order->status)?'已付款':''}}</th>
 							  <th>{{$order->updated_at}}</th>
-							  <td><a class="btn btn-success" href="{{route('users.orders.show', ['order'=>$order->id])}}">檢視明細</a></td>
+							  <td>
+								<a class="btn btn-success" href="{{route('users.orders.show', ['order'=>$order->id])}}">檢視明細</a>
+								<form class="d-inline-block" action="{{route('users.orders.destroy', ['order'=>$order->id])}}" method="post">
+									@csrf
+									@method('DELETE')
+									<button class="btn btn-danger" type="submit" @if($order->status) disabled @endif >取消訂單</button>
+								</form>
+							  </td>
 							</tr>
 						@endforeach
 					  </tbody>

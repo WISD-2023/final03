@@ -18,6 +18,7 @@ class OrderFactory extends Factory
     {
         return [
             //
+			'status'=>mt_rand(0,1)
         ];
     }
 }
