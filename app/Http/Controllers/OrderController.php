@@ -61,7 +61,8 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        // 在這裡加入顯示某一訂單詳細資料的邏輯
+        return view('sellers.orders.show', compact('order'));
     }
 
     /**
