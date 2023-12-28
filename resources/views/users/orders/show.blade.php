@@ -4,6 +4,21 @@
             {{ __('訂單明細 '.$order->no) }}
         </h2>
     </x-slot>
+	<script>
+		$(function(){
+			onCountTotal();
+		});
+		
+		function onCountTotal(){
+			let total = 0;
+			$('table tbody td[data-price]').each(function(){
+				let money = parseInt($(this).text().replaceAll('$',''));
+				total+=money;
+			});
+
+			$('table tfoot th[data-total]').text('$'+total);
+		}
+	</script>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
