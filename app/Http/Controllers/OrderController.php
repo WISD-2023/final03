@@ -16,7 +16,7 @@ class OrderController extends Controller
     public function index()
     {
         //
-		$orders = auth()->user()->orders()->where('status','>=','0')->get();
+		$orders = auth()->user()->orders()->where('status','0')->get();
 		
 		$data = [
 			'orders' => $orders

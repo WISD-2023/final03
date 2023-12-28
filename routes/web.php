@@ -51,9 +51,15 @@ Route::middleware('auth')->group(function () {
 
 		// 2-6-13
 		Route::patch('/{user}/seller', [UserController::class, 'seller_update'])->name('seller');
-		// 2-6-19
+		
 		// 2-6-20
 		Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
+		
+		// 2-6-9
+		Route::get('/orders/cancel', [OrderController::class, 'cancel_index'])->name('orders.cancel.index');
+		
+		// 2-6-10
+		Route::get('/orders/done', [OrderController::class, 'done_index'])->name('orders.done.index');
 	});
 });
 
