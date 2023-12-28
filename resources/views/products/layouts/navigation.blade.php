@@ -1,7 +1,7 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="{{route('products.index')}}">多方位購物網站</a>
+        <a class="navbar-brand" href="{{route('products.index')}}">{{config('app.name', 'Laravel')}}</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -12,7 +12,9 @@
                         <li><a class="dropdown-item" href="{{route('products.index')}}">所有商品</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="{{route('users.index')}}">會員主頁</a></li>
-                        <li><a class="dropdown-item" href="#!">賣家主頁</a></li>
+                        @if(auth()->user()->seller()->get()->count() > 0)
+							<li><a class="dropdown-item" href="#!">賣家主頁</a></li>
+						@endif
                     </ul>
                 </li>
 				<form action="{{route('products.search')}}" method="get" class="nav-item">
@@ -21,11 +23,18 @@
 				</form>
             </ul>
             <form class="d-flex">
-                <a class="btn btn-outline-dark" href="{{route('cart_items.index')}}">
-                    <i class="bi-cart-fill me-1"></i>
-                    購物車
-					<span class="badge bg-dark text-white ms-1 rounded-pill">{{$cart_items_amount}}</span>
-                </a>
+				@auth
+					<a class="btn btn-outline-dark" href="{{route('cart_items.index')}}">
+						<i class="bi-cart-fill me-1"></i>
+						購物車
+						<span class="badge bg-dark text-white ms-1 rounded-pill">{{$cart_items_amount}}</span>
+					</a>
+				@else
+					<a class="btn btn-outline-dark" href="{{route('login')}}">
+						<i class="bi-key-fill me-1"></i>
+						登入
+					</a>
+				@endauth
             </form>
         </div>
     </div>

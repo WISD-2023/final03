@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-		@section('page-title', '首頁 - 多方位購物網站')
+		@section('page-title', '首頁 - ' . config('app.name', 'Laravel'))
 		@include('products.layouts.header')
     </head>
     <body>
-		@section('nav-title', '多方位購物網站')
+		@section('nav-title', config('app.name', 'Laravel'))
 		@section('nav-type', '所有商品')
 		@include('products.layouts.navigation')
         <!-- Section-->
