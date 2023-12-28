@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -60,5 +61,21 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function seller_update(User $user)
+    {
+        // 可以在這裡加入相關的邏輯，例如檢查是否已經是賣家等
+
+        // 更新資料庫
+        // $user->update(['is_seller' => true]);
+
+        // 顯示成功訊息，這裡使用 Laravel 的 with 方法，需要在相應的 view 中顯示
+        // return "申請成功 ".$user."";
+        return view('users.seller');
+        // return view('users.seller', [
+        //     'user' => $user->user(),
+        // ]);
+        // return redirect()->route('users.seller')->with('success', '申請成功');
     }
 }
