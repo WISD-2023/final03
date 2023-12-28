@@ -40,7 +40,9 @@ Route::middleware('auth')->group(function () {
 
 		// 2-6-13
 		Route::patch('/{user}/seller', [UserController::class, 'seller_update'])->name('users.seller');
-
+		// 2-6-19
+		Route::delete('/cart_items/{cart_item}', [CartItemController::class, 'destrsoy'])->name('users.cart_items.destroy');
+		
 	});
 });
 
