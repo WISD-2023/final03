@@ -19,7 +19,13 @@
                         {{ __('購物車') }}
                     </x-nav-link>
                     <x-nav-link :href="route('users.orders.index')" :active="request()->routeIs('users.orders.index')">
-                        {{ __('所有訂單') }}
+                        {{ __('所有進行中訂單') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('users.orders.done.index')" :active="request()->routeIs('users.orders.done.index')">
+                        {{ __('所有已完成訂單') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('users.orders.cancel.index')" :active="request()->routeIs('users.orders.cancel.index')">
+                        {{ __('所有已取消訂單') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -80,7 +86,13 @@
                 {{ __('購物車') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('users.orders.index')" :active="request()->routeIs('users.orders.index')">
-                {{ __('購物車') }}
+                {{ __('所有進行中訂單') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('users.orders.done.index')" :active="request()->routeIs('users.orders.done.index')">
+                {{ __('所有已完成訂單') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('users.orders.cancel.index')" :active="request()->routeIs('users.orders.cancel.index')">
+                {{ __('所有已取消訂單') }}
             </x-responsive-nav-link>
         </div>
 
