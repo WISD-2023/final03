@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\Seller;
 use App\Models\Order;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,36 +14,22 @@ class OrderSeeder extends Seeder
      */
     public function run(): void
     {
-		Seller::all()->each(function($seller){
-			Order::factory(5)->create([
-				'seller_id' => $seller->id,
-				'user_id' => function () use ($seller) {
-					$result = User::inRandomOrder()->first()->id;
-					
-					// 買家跟賣家不能是同一個人
-					while($result == $seller->user_id){
-						$result = User::inRandomOrder()->first()->id;
-					}
-					
-					return $result;
-				},
-			]);
-		});
-		
 		User::all()->each(function($user){
-			Order::factory(5)->create([
-				'seller_id' => function () use ($user) {
-					$result = Seller::inRandomOrder()->first();
-					
-					// 買家跟賣家不能是同一個人
-					while($result->user_id == $user->id){
-						$result = Seller::inRandomOrder()->first();
-					}
-					
-					return $result->id;
-				},
-				'user_id' => $user->id,
-			]);
+			$i = 0;
+			// 分次產生10筆訂單，避免時間戳相同
+			while($i < 10){
+				$time = "LA".round(microtime(true)*100).mt_rand(100,999);
+				while(Order::where('no',$time)->get()->count() > 0){
+					$time = "LA".round(microtime(true)*100).mt_rand(100,999);
+				}
+				
+				Order::factory(1)->create([
+					'no' => $time,
+					'user_id' => $user->id,
+				]);
+				
+				$i++;
+			}
 		});
     }
 }
