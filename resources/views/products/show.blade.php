@@ -19,7 +19,7 @@
 						<div class="text-left pl-3 pt-2 w-50">
 							<h3>{{$product->name}}</h3>
 							<p>
-								賣家 {{$product->seller->user->name}} • 更新時間 {{$product->updated_at}}
+								賣家 {{$product->seller->user->name}} • 分類 {{$product->category->name}} • 更新時間 {{$product->updated_at}}
 							</p>
 							<p>
 								{{$product->description}}
