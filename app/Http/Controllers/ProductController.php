@@ -165,4 +165,10 @@ class ProductController extends Controller
             'orderDetails'=>$product->orderDetails()->get()
         ]);
     }
+
+    public function seller_index(){
+        return view('sellers.products.index', [
+            'products'=>Product::where('seller_id', auth()->user()->id)->get()
+        ]);
+    }
 }
