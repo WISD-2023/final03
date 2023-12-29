@@ -64,16 +64,6 @@ class CommentController extends Controller
             // $comment->like_score = 3;
             $comment->save();
 
-            // dd(auth()->user()->id);
-
-            // $product->comments()->create([
-            //     'product_id' => $product->id,
-            //     'user_id' => auth()->user()->id,
-            //     'description' => "$request->comment",
-            //     'like_score' => "3"
-            // ]);
-
-
             return redirect()->route('products.show', ['product'=>$product])->with('status', 'comment-updated');
         }
     }
