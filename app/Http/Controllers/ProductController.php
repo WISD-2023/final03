@@ -149,4 +149,12 @@ class ProductController extends Controller
             'orderDetails'=>$product->orderDetails()->get()
         ]);
     }
+
+    public function seller_cancel_index(Product $product){
+        return view('sellers.products.orders.cancel', [
+            'product_id'=>$product->id,
+            'product_name'=>$product->name,
+            'orderDetails'=>$product->orderDetails()->get()
+        ]);
+    }
 }

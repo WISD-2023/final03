@@ -2,7 +2,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{-- {{ __('此商品 '.$product_name.'('.$product_id.') 所有 待出貨 訂單') }} --}}
-            {{ __('此商品 '.$product_name.' 所有 待出貨 訂單') }}
+            {{ __('此商品 '.$product_name.' 所有 取消 訂單') }}
         </h2>
     </x-slot>
     <div class="py-12">
@@ -19,7 +19,7 @@
                         </thead>
                         <tbody>
                             @foreach($orderDetails as $data)
-                                @if($data->order->status == 0)
+                                @if($data->order->status == -1)
                                     <tr>
                                         <th scope="row">{{$data->order->no}}</th>
                                         <th>{{$data->amount}}</th>
