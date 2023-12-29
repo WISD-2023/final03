@@ -20,8 +20,9 @@ class SellerFactory extends Factory
         return [
             //'secret_key' => Str::random(32),
             //'secret_iv' => Str::random(16),
-            'secret_key' => "A8bckaUs0cQ8WpYqwZXkOj03lWFUQrxw",
-            'secret_iv' => "CzEEgu89GoaKZPLP",
+            'merchant' => "MS151149294",
+            'secret_key' => "p8hfQaNqqtD1e8hmo8uE0ShNPqshLUYq",
+            'secret_iv' => "CJRH9d4TxO59bO0P",
         ];
     }
 }

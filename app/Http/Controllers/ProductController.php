@@ -15,7 +15,6 @@ class ProductController extends Controller
      */
     public function index()
     {
-		dd(auth()->user()->seller->orders());
         $products = Product::where('is_display','1')->get();
 		$cartItemsAmount = (auth()->user())?auth()->user()->cartItems()->count():0;
 
