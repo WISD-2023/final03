@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Models\OrderItem;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
@@ -17,14 +17,14 @@ class OrderController extends Controller
     {
         //
 		$orders = auth()->user()->orders()->where('status','0')->get();
-		
+
 		$data = [
 			'orders' => $orders
 		];
-		
+
 		return view('users.orders.index', $data);
     }
-	
+
     /**
      * Display a listing of the resource.
      */
@@ -32,14 +32,14 @@ class OrderController extends Controller
     {
         //
 		$orders = auth()->user()->orders()->where('status','1')->get();
-		
+
 		$data = [
 			'orders' => $orders
 		];
-		
+
 		return view('users.orders.done', $data);
     }
-	
+
     /**
      * Display a listing of the resource.
      */
@@ -47,11 +47,11 @@ class OrderController extends Controller
     {
         //
 		$orders = auth()->user()->orders()->where('status','-1')->get();
-		
+
 		$data = [
 			'orders' => $orders
 		];
-		
+
 		return view('users.orders.cancel', $data);
     }
 
@@ -60,8 +60,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        // 在這裡加入顯示訂單相關資訊介面的邏輯
-        return view('users.orders.create');
+
     }
 
     /**
@@ -69,21 +68,30 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        // 在這裡加入驗證資料、儲存訂單相關資料的邏輯
-
-        $order = Order::create([
-            // 訂單相關資料
-        ]);
-                foreach ($request->input('cart_items') as $cart_item) {
-            OrderItem::create([
-                'order_id' => $order->id,
-                'product_id' => $cart_item['product_id'],
-                'quantity' => $cart_item['quantity'],
-                // 其他訂單項目相關資料
-            ]);
+        // 產生訂單序號
+        $orderNo = "LA".round(microtime(true)*100).mt_rand(100,999);
+        while(Order::where('no',$orderNo)->get()->count() > 0){
+            $orderNo = "LA".round(microtime(true)*100).mt_rand(100,999);
         }
-                // 可以在這裡加入重新導向到第三方金流平台的邏輯，這裡使用 Laravel 的 redirect 方法
-        return redirect()->route('users.orders.checkout', ['order' => $order->id]);
+
+        // 創建訂單
+        $createOrder = new Order();
+        $createOrder->no = $orderNo;
+        $createOrder->user_id = auth()->user()->id;
+        $createOrder->status = '0';
+        $createOrder->save();
+        // 提取購物車內容
+        $cartItems = auth()->user()->cartItems()->get();
+        foreach ($cartItems as $cartItem) {
+            $orderItem = new OrderDetail();
+            $orderItem->order_id = $createOrder->id;
+            $orderItem->product_id = $cartItem->product_id;
+            $orderItem->amount = $cartItem->amount;
+            $orderItem->save();
+            $cartItem->delete();
+        }
+        // return
+        return redirect()->route('users.orders.checkout');
     }
 
     /**
@@ -93,19 +101,19 @@ class OrderController extends Controller
     {
         //
 		$orderStatus = '';
-		
+
 		switch($order->status){
 			case '1':
 				$orderStatus = ' • 已完成';break;
 			case '-1':
 				$orderStatus = ' • 已取消';break;
 		}
-		
+
 		$data = [
 			'order' => $order,
 			'orderStatus' => $orderStatus
 		];
-		
+
 		return view('users.orders.show', $data);
     }
 
@@ -124,7 +132,7 @@ class OrderController extends Controller
     {
         //
 		$this->authorize('update', $order);
-		
+
 		$order->update(['status'=>'-1']);
 		return redirect()->route('users.orders.index');
     }
@@ -133,6 +141,14 @@ class OrderController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Order $order)
+    {
+		//
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function checkout()
     {
 		//
     }

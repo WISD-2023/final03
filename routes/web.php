@@ -41,25 +41,26 @@ Route::middleware('auth')->group(function () {
 		Route::get('/', function () {
 			return view('users.index');
 		})->name('index');
-		
-		
-		
-		
+
+
+
+
 		Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 		Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 		Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 		// 2-6-13
 		Route::patch('/{user}/seller', [UserController::class, 'seller_update'])->name('seller');
-		
+
 		// 2-6-9
 		Route::get('/orders/cancel', [OrderController::class, 'cancel_index'])->name('orders.cancel.index');
-		
+
 		// 2-6-10
 		Route::get('/orders/done', [OrderController::class, 'done_index'])->name('orders.done.index');
-		
-		
-		
+
+        // orders.checkout
+        Route::get('/orders/checkout', [OrderController::class, 'checkout'])->name('orders.checkout');
+
 		Route::resource('/orders', OrderController::class);
 		Route::resource('/cart_items', CartItemController::class);
 	});
