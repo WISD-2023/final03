@@ -46,6 +46,11 @@
                     </x-slot>
 
                     <x-slot name="content">
+						@if(auth()->user()->seller != null)
+							<x-dropdown-link :href="route('sellers.index')">
+								{{ __('賣家中心') }}
+							</x-dropdown-link>
+						@endif
                         <x-dropdown-link :href="route('users.profile.edit')">
                             {{ __('個人檔案') }}
                         </x-dropdown-link>
@@ -104,6 +109,11 @@
             </div>
 
             <div class="mt-3 space-y-1">
+				@if(auth()->user()->seller != null)
+					<x-responsive-nav-link :href="route('sellers.index')">
+						{{ __('賣家中心') }}
+					</x-responsive-nav-link>
+				@endif
                 <x-responsive-nav-link :href="route('users.profile.edit')">
                     {{ __('個人檔案') }}
                 </x-responsive-nav-link>
