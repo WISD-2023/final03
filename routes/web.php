@@ -6,6 +6,7 @@ use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\HashKeyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,16 +36,36 @@ Route::middleware('auth')->group(function () {
 			return view('sellers.index');
 		})->name('index');
 
+        // 2-7-1
+        Route::get('/orders', [OrderController::class, 'seller_index'])->name('orders.index');
+
 		// 2-7-2
-		Route::get('orders/income', [OrderController::class, 'income_index'])->name('orders.income.index');
+		Route::get('/orders/income', [OrderController::class, 'income_index'])->name('orders.income.index');
+
+        // 2-7-3
+        Route::get('/orders/{order}', [OrderController::class, 'seller_show'])->name('orders.show');
 
 		// 2-7-4
-		Route::get('products', [ProductController::class, 'seller_index'])->name('products.index');
-		
-		
-		Route::resource('/orders', OrderController::class);
+		Route::get('/products', [ProductController::class, 'seller_index'])->name('products.index');
+
+        // 2-7-5
+        Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+
+        // 2-7-6
+        Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+        Route::patch('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+
+        // 2-7-7
+        Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+
+        // 2-7-8
+        Route::get('/products/{product}/comments', [CommentController::class, 'index'])->name('comments.index');
+
+        // 2-7-9
+        Route::get('/hash_keys/create', [HashKeyController::class, 'create'])->name('hash_keys.index');
+        Route::post('/hash_keys', [HashKeyController::class, 'store'])->name('hash_keys.store');
 	});
-	
+
 	Route::name("users.")->prefix('users')->group(function () {
 		Route::get('/', function () {
 			return view('users.index');

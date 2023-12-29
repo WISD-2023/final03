@@ -56,6 +56,14 @@ class OrderController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function seller_index()
+    {
+        //
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -115,6 +123,29 @@ class OrderController extends Controller
 		];
 
 		return view('users.orders.show', $data);
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function seller_show(Order $order)
+    {
+        //
+		$orderStatus = '';
+
+		switch($order->status){
+			case '1':
+				$orderStatus = ' • 已完成';break;
+			case '-1':
+				$orderStatus = ' • 已取消';break;
+		}
+
+		$data = [
+			'order' => $order,
+			'orderStatus' => $orderStatus
+		];
+
+		return view('sellers.orders.show', $data);
     }
 
     /**
