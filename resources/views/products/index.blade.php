@@ -32,7 +32,10 @@
 										@csrf
 										@method('POST')
 										<input name="product" value="{{$product->id}}" type="hidden" />
-										<div class="text-center"><button class="btn btn-outline-dark mt-auto" type="submit">加到購物車</button></div>
+										<div class="text-center">
+											<button class="btn btn-outline-dark mt-auto" type="submit">加到購物車</button>
+											<a href="{{route('products.approx',['product'=>$product->id])}}" class="btn btn-outline-dark mt-auto" data-type="approx">追蹤</a>
+										</div>
 									</form>
 								</div>
 							</div>

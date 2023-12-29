@@ -2,3 +2,7 @@
 .table td, .table th{
 	vertical-align: middle;
 }
+
+a[data-type="approx"]:hover{
+	color: #fff !important;
+}
