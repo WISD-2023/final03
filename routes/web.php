@@ -87,9 +87,6 @@ Route::middleware('auth')->group(function () {
 		// 2-6-10
 		Route::get('/orders/done', [OrderController::class, 'done_index'])->name('orders.done.index');
 
-        // orders.checkout
-        Route::get('/orders/checkout', [OrderController::class, 'checkout'])->name('orders.checkout');
-
 		Route::resource('/orders', OrderController::class);
 		Route::resource('/cart_items', CartItemController::class);
 	});

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\NewebPay\MPG;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
@@ -81,25 +82,32 @@ class OrderController extends Controller
         while(Order::where('no',$orderNo)->get()->count() > 0){
             $orderNo = "LA".round(microtime(true)*100).mt_rand(100,999);
         }
-
-        // 創建訂單
-        $createOrder = new Order();
-        $createOrder->no = $orderNo;
-        $createOrder->user_id = auth()->user()->id;
-        $createOrder->status = '0';
-        $createOrder->save();
+		
         // 提取購物車內容
         $cartItems = auth()->user()->cartItems()->get();
-        foreach ($cartItems as $cartItem) {
-            $orderItem = new OrderDetail();
-            $orderItem->order_id = $createOrder->id;
-            $orderItem->product_id = $cartItem->product_id;
-            $orderItem->amount = $cartItem->amount;
-            $orderItem->save();
-            $cartItem->delete();
-        }
-        // return
-        return redirect()->route('users.orders.checkout');
+		
+		if($cartItems->count() == 0){
+			return redirect()->route('users.cart_items.index');
+		}
+		else{
+			// 創建訂單
+			$createOrder = new Order();
+			$createOrder->no = $orderNo;
+			$createOrder->user_id = auth()->user()->id;
+			$createOrder->status = '0';
+			$createOrder->save();
+			foreach ($cartItems as $cartItem) {
+				$orderItem = new OrderDetail();
+				$orderItem->order_id = $createOrder->id;
+				$orderItem->product_id = $cartItem->product_id;
+				$orderItem->amount = $cartItem->amount;
+				$orderItem->save();
+				$cartItem->delete();
+			}
+			
+			// return
+			return $this->checkout($orderNo);
+		}
     }
 
     /**
@@ -177,10 +185,13 @@ class OrderController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 產生訂單
      */
-    public function checkout()
+    public function checkout($orderNo)
     {
 		//
+		$mpg = new MPG();
+		
+		return $orderNo;
     }
 }
