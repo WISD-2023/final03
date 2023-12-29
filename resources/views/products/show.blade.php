@@ -68,7 +68,7 @@
 					</table>
 				</div>
 			</div>
-			
+
 			@if($canLeaveComment)
 				<!-- 2-6-14 -->
 				<!-- 曾經購買過的才能評論 -->
@@ -77,8 +77,25 @@
 					<div class="card p-2">
 						<!-- 留言評論 -->
 						<table class="table">
-							<form>
-								
+							<form action="{{route('products.comment.store', ['product' => $product]) }}" method="post">
+                                @csrf
+                                <label for="like_score">評價分數：</label>
+                                <input type="number" id="like_score" name="like_score" min="1" max="5" step="1" value="5" required>
+
+                                <label for="comment">評論：</label>
+                                <textarea name="comment" class="col" placeholder="寫下你對於此商品的評論吧!" rows="4" required></textarea>
+
+                                <button class="btn btn-outline-dark mt-auto" type="submit">提交評論</button>
+
+                                @if (session('status') === 'comment-updated')
+                                <p
+                                    x-data="{ show: true }"
+                                    x-show="show"
+                                    x-transition
+                                    {{-- x-init="setTimeout(() => show = false, 2000)" --}}
+                                    class="text-sm text-gray-600"
+                                >{{ __('提交成功!') }}</p>
+                                @endif
 							</form>
 						</table>
 					</div>

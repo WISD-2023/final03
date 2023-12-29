@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCommentRequest;
@@ -28,23 +29,53 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Product $product)
     {
-        //儲存留言內容資料
-        // // 在這裡加入相關的驗證邏輯，例如檢查是否為會員等
+        // dd($product);
+        $canLeaveComment = false;
+        $ordersCount = 0;
+        $commentsCount = 0;
 
-        // // 儲存評論內容資料
-        // Comment::create([
-        //     'product_id' => $product->id,
-        //     'user_id' => auth()->user()->id, // 假設使用身份驗證，這樣可以得到當前登入的會員 ID
-        //     'content' => $request->input('content'),
-        //     'like_count' => $request->input('like_count'),
-        //     // 其他欄位...
-        // ]);
+        foreach($product->orderDetails()->get() as $orderDetail){
+            if($orderDetail->order?->user->id == auth()->user()->id and $orderDetail->order?->status == 0){
+                $ordersCount++;
+            }
+        }
 
-        // // 顯示評論成功訊息，這裡使用 Laravel 的 with 方法，需要在相應的 view 中顯示
-        // return redirect()->route('products.show', ['product' => $product])->with('success', '評論成功');
-        return view('products.show');
+        foreach($product->comments()->get() as $comment){
+            if($comment->user?->id == auth()->user()->id){
+                $commentsCount++;
+            }
+        }
+
+        // 如果完成訂單數大於留言數，則可以留言
+        if($ordersCount > $commentsCount){
+            $canLeaveComment = true;
+        }
+        // return view('products.show');
+
+        if($canLeaveComment){
+            // 儲存到資料庫
+            $comment = new Comment();
+            $comment->product_id = $product->id;
+            $comment->user_id = auth()->user()->id;
+            $comment->description = $request->comment;
+            $comment->like_score = $request->like_score;
+            // $comment->like_score = 3;
+            $comment->save();
+
+            // dd(auth()->user()->id);
+
+            // $product->comments()->create([
+            //     'product_id' => $product->id,
+            //     'user_id' => auth()->user()->id,
+            //     'description' => "$request->comment",
+            //     'like_score' => "3"
+            // ]);
+
+
+            return redirect()->route('products.show', ['product'=>$product])->with('status', 'comment-updated');
+        }
     }
 
     /**
@@ -69,6 +100,7 @@ class CommentController extends Controller
     public function update(UpdateCommentRequest $request, Comment $comment)
     {
         //
+
     }
 
     /**
