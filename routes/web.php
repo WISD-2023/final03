@@ -22,21 +22,30 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
-Route::resource('/products', ProductController::class)->except(['index']);
 // 2-6-14
-Route::post('/products/{product}/comment', [CommentController::class, 'store'])->name('products.comment.update');
+Route::post('/products/{product}/comment', [CommentController::class, 'store'])->name('products.comment.store')->middleware('auth');
+
 // 2-6-15
-Route::get('products/{product}/approx', [ProductController::class, 'approx'])->name('products.approx');
-// 2-7-1
-Route::get('sellers/orders', [SellerOrderController::class, 'index'])->name('sellers.orders');
-// 2-7-2
-Route::get('sellers/orders/income', [SellerOrderController::class, 'income_index'])->name('sellers.orders.income.index');
-// 2-7-3
-Route::get('sellers/orders/{order}', [OrderController::class, 'show'])->name('sellers.orders.show');
-// 2-7-4
-Route::get('sellers/products', [ProductController::class, 'index'])->name('sellers.products.index');
+Route::get('products/{product}/approx', [ProductController::class, 'approx'])->name('products.approx')->middleware('auth');
+
+Route::resource('/products', ProductController::class)->except(['index']);
 
 Route::middleware('auth')->group(function () {
+	Route::name("sellers.")->prefix('sellers')->group(function () {
+		Route::get('/', function () {
+			return view('sellers.index');
+		})->name('index');
+
+		// 2-7-2
+		Route::get('orders/income', [SellerOrderController::class, 'income_index'])->name('orders.income.index');
+
+		// 2-7-4
+		Route::get('products', [ProductController::class, 'seller_index'])->name('products.index');
+		
+		
+		Route::resource('/orders', SellerOrderController::class);
+	});
+	
 	Route::name("users.")->prefix('users')->group(function () {
 		Route::get('/', function () {
 			return view('users.index');
