@@ -5,7 +5,6 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\SellerOrderController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,13 +36,13 @@ Route::middleware('auth')->group(function () {
 		})->name('index');
 
 		// 2-7-2
-		Route::get('orders/income', [SellerOrderController::class, 'income_index'])->name('orders.income.index');
+		Route::get('orders/income', [OrderController::class, 'income_index'])->name('orders.income.index');
 
 		// 2-7-4
 		Route::get('products', [ProductController::class, 'seller_index'])->name('products.index');
 		
 		
-		Route::resource('/orders', SellerOrderController::class);
+		Route::resource('/orders', OrderController::class);
 	});
 	
 	Route::name("users.")->prefix('users')->group(function () {
