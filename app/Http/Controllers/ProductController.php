@@ -157,4 +157,12 @@ class ProductController extends Controller
             'orderDetails'=>$product->orderDetails()->get()
         ]);
     }
+
+    public function seller_done_index(Product $product){
+        return view('sellers.products.orders.done', [
+            'product_id'=>$product->id,
+            'product_name'=>$product->name,
+            'orderDetails'=>$product->orderDetails()->get()
+        ]);
+    }
 }
