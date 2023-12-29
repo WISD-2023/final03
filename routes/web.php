@@ -30,6 +30,8 @@ Route::get('products/{product}/approx', [ProductController::class, 'approx'])->n
 
 Route::resource('/products', ProductController::class)->except(['index']);
 
+Route::post('/payments/complete', [OrderController::class, 'payment_complete'])->name('payments.complete');
+
 Route::middleware('auth')->group(function () {
 	Route::name("sellers.")->prefix('sellers')->middleware('seller.auth')->group(function () {
 		Route::get('/', function () {

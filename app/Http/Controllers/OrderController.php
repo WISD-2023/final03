@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Seller;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\NewebPay\MPG;
@@ -106,7 +107,7 @@ class OrderController extends Controller
 			}
 			
 			// return
-			return $this->checkout($orderNo);
+			return $this->checkout($createOrder);
 		}
     }
 
@@ -187,11 +188,57 @@ class OrderController extends Controller
     /**
      * 產生訂單
      */
-    public function checkout($orderNo)
+    public function checkout(Order $order)
     {
 		//
 		$mpg = new MPG();
+		$mpg->ServiceURL			= "https://ccore.newebpay.com/MPG/mpg_gateway";		// API服務位置 (此為測試環境網址)
+		$mpg->ReturnURL				= route('products.index');	// 支付完成，返回商店網址
+		$mpg->NotifyURL				= route('payments.complete');	// 支付通知網址
+		$mpg->ClientBackURL			= route('users.orders.index');  // 返回商店網址
 		
-		return $orderNo;
+		$mpg->HashKey				= auth()->user()->seller->secret_key;	// Hashkey
+		$mpg->HashIV				= auth()->user()->seller->secret_iv;	// HashIV
+		$mpg->MerchantID			= auth()->user()->seller->merchant;				// MerchantID
+		$mpg->MerchantTradeNo		= $order->no;						// 訂單編號
+		$mpg->Version				= '1.6';						// API程式版本
+		
+		$mpg->Amount = 0;
+		foreach($order->orderDetails()->get() as $orderDetail){
+			$mpg->Amount += $orderDetail->amount * $orderDetail->product->price;
+		}
+
+		$mpg->Order_Title			= $order->no;
+		$mpg->ExpireDate			= 3;
+		
+		
+		return $mpg->getOutput();
     }
+	
+    /**
+     * 藍新付款回傳
+     */
+	public function payment_complete(Request $request){
+		if($_SERVER['HTTP_USER_AGENT'] == "pay2go"){
+			if($request->Status == "SUCCESS" and $request->MerchantID and $request->TradeInfo){
+				$seller = Seller::where('merchant', $request->MerchantID)->get()->first();
+				if($seller != null){
+					$mpg = new MPG();
+					$mpg->HashKey = $seller->secret_key;
+					$mpg->HashIV = $seller->secret_iv;
+					$data_raw = $mpg->create_aes_decrypt($request->TradeInfo, $mpg->HashKey, $mpg->HashIV);
+
+					if($data_raw){
+						$data = json_decode($data_raw,true);
+						
+						$order = Order::where('no', $data['Result']['MerchantOrderNo'])->first();
+						$order->status = '1';
+						$order->save();
+						
+						echo "1|OK";
+					}
+				}
+			}
+		}
+	}
 }

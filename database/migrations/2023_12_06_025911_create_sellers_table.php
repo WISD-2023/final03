@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('sellers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->string('merchant');
             $table->string('secret_key');
             $table->string('secret_iv');
             $table->timestamps();
