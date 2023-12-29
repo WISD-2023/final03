@@ -37,13 +37,13 @@ Route::middleware('auth')->group(function () {
 		})->name('index');
 
         // 2-7-1
-        Route::get('/orders', [OrderController::class, 'seller_index'])->name('orders.index');
+        Route::get('/products/{product}/orders', [ProductController::class, 'seller_progress_index'])->name('products.orders.index');
 
 		// 2-7-2
-		Route::get('/orders/income', [OrderController::class, 'income_index'])->name('orders.income.index');
+		Route::get('/products/{product}/orders/cancel', [ProductController::class, 'seller_cancel_index'])->name('products.orders.cancel');
 
         // 2-7-3
-        Route::get('/orders/{order}', [OrderController::class, 'seller_show'])->name('orders.show');
+        Route::get('/products/{product}/orders/done', [ProductController::class, 'seller_done_index'])->name('products.orders.done');
 
 		// 2-7-4
 		Route::get('/products', [ProductController::class, 'seller_index'])->name('products.index');

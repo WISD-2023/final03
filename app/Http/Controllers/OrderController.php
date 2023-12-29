@@ -46,21 +46,13 @@ class OrderController extends Controller
     public function cancel_index()
     {
         //
-		$orders = auth()->user()->orders()->where('status','-1')->get();
+		$seller_orders = auth()->user()->orders()->where('status','-1')->get();
 
 		$data = [
-			'orders' => $orders
+			'orders' => $seller_orders
 		];
 
 		return view('users.orders.cancel', $data);
-    }
-
-    /**
-     * Display a listing of the resource.
-     */
-    public function seller_index()
-    {
-        //
     }
 
     /**
@@ -123,29 +115,6 @@ class OrderController extends Controller
 		];
 
 		return view('users.orders.show', $data);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function seller_show(Order $order)
-    {
-        //
-		$orderStatus = '';
-
-		switch($order->status){
-			case '1':
-				$orderStatus = ' • 已完成';break;
-			case '-1':
-				$orderStatus = ' • 已取消';break;
-		}
-
-		$data = [
-			'order' => $order,
-			'orderStatus' => $orderStatus
-		];
-
-		return view('sellers.orders.show', $data);
     }
 
     /**

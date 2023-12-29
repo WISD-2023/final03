@@ -142,4 +142,12 @@ class ProductController extends Controller
         ];
         return view('products.approx', $data);
     }
+
+    public function seller_progress_index(Product $product){
+        return view('sellers.products.orders.index', [
+            'product_id'=>$product->id,
+            'product_name'=>$product->name,
+            'orderDetails'=>$product->orderDetails()->get()
+        ]);
+    }
 }
