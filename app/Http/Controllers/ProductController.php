@@ -60,13 +60,13 @@ class ProductController extends Controller
 				$commentsCount = 0;
 
 				foreach($product->orderDetails()->get() as $orderDetail){
-					if($orderDetail->order->user->id == auth()->user()->id){
+					if($orderDetail->order?->user->id == auth()->user()->id){
 						$ordersCount++;
 					}
 				}
 
 				foreach($product->comments()->get() as $comment){
-					if($comment->user->id == auth()->user()->id){
+					if($comment->user?->id == auth()->user()->id){
 						$commentsCount++;
 					}
 				}
