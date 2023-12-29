@@ -30,7 +30,7 @@ Route::get('products/{product}/approx', [ProductController::class, 'approx'])->n
 Route::resource('/products', ProductController::class)->except(['index']);
 
 Route::middleware('auth')->group(function () {
-	Route::name("sellers.")->prefix('sellers')->group(function () {
+	Route::name("sellers.")->prefix('sellers')->middleware('seller.auth')->group(function () {
 		Route::get('/', function () {
 			return view('sellers.index');
 		})->name('index');
