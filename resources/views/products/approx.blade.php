@@ -1,4 +1,4 @@
-@section('page-title', '首頁 - ' . config('app.name', 'Laravel'))
+@section('page-title', '追蹤 ' . $approxProduct . ' 商品的近似商品列表 - ' . config('app.name', 'Laravel'))
 @section('nav-title', config('app.name', 'Laravel'))
 @section('nav-type', '追蹤 ' . $approxProduct . ' 商品的近似商品列表')
 
