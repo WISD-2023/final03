@@ -54,35 +54,35 @@ class ProductController extends Controller
 		if($product->is_display){
 			$cartItemsAmount = (auth()->user())?auth()->user()->cartItems()->count():0;
 			$canLeaveComment = false;
-			
+
 			if(auth()->user()){
 				$ordersCount = 0;
 				$commentsCount = 0;
-				
+
 				foreach($product->orderDetails()->get() as $orderDetail){
 					if($orderDetail->order->user->id == auth()->user()->id){
 						$ordersCount++;
 					}
 				}
-				
+
 				foreach($product->comments()->get() as $comment){
 					if($comment->user->id == auth()->user()->id){
 						$commentsCount++;
 					}
 				}
-				
+
 				// 如果完成訂單數大於留言數，則可以留言
 				if($ordersCount > $commentsCount){
 					$canLeaveComment = true;
 				}
 			}
-			
+
 			$data = [
 				'product'=>$product,
 				'cart_items_amount'=>$cartItemsAmount,
 				'canLeaveComment'=>$canLeaveComment
 			];
-			
+
 			return view('products.show', $data);
 		}
 		else
@@ -112,7 +112,7 @@ class ProductController extends Controller
     {
         //
     }
-	
+
     /**
      * 搜尋商品
      */
@@ -132,13 +132,13 @@ class ProductController extends Controller
 
     public function approx(Product $product)
     {
-        // // 在這裡加入顯示近似商品列表及價格的邏輯
-        // // 可以使用 Eloquent 或其他方法獲取近似商品的資料
-
-        // $approxProducts = $product->getApproxProducts(); // 這只是一個假設的方法，實際使用時應該根據你的業務邏輯進行實現
-
-        // // 顯示近似商品列表及價格的 view
-        // return view('products.approx', compact('approxProducts'));
-        return view('products.approx');
+        $cartItemsAmount = (auth()->user())?auth()->user()->cartItems()->count():0;
+        // $product->category->products()->get()
+        $data = [
+            'approxProduct' => $product->name,
+            'products' => $product->category->products()->get(),
+            'cart_items_amount'=>$cartItemsAmount,
+        ];
+        return view('products.approx', $data);
     }
 }
