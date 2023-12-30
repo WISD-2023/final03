@@ -30,7 +30,7 @@ class OrderSeeder extends Seeder
 						$result = Product::inRandomOrder()->first();
 						
 						// 買家跟賣家不能是同一個人
-						while($result->seller_id == $user->user_id){
+						while($result->seller_id == $user->id){
 							$result = Product::inRandomOrder()->first();
 						}
 						
