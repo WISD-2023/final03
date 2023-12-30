@@ -25,11 +25,7 @@
                                         <th>{{$data->amount}}</th>
                                         <th>{{$data->updated_at}}</th>
                                         <th>
-											<form class="d-inline-block" action="{{route('sellers.orders.update', ['order'=>$data->order->id])}}" method="post">
-												@csrf
-												@method('PATCH')
-												<button class="btn btn-warning" type="submit">標示為已出貨</button>
-											</form>
+											
 										</th>
                                     </tr>
                                 @endif

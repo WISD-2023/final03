@@ -78,6 +78,8 @@ Route::middleware('auth')->group(function () {
 		
         // 2-7-13
         Route::get('/orders/{order}', [OrderController::class, 'seller_show'])->name('orders.show');
+		
+		// 2-7-14
 		Route::patch('/orders/{order}', [OrderController::class, 'seller_update'])->name('orders.update');
 	});
 
