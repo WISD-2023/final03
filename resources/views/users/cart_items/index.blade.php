@@ -47,6 +47,7 @@
                             <th scope="col">商品名稱</th>
                             <th scope="col">數量</th>
                             <th scope="col">總金額</th>
+                            <th scope="col">賣家</th>
                             <th scope="col">操作</th>
 						</tr>
 					</thead>
@@ -58,6 +59,7 @@
                                 <td>{{$cart_item->product->name}}</td>
                                 <td><input style="width:100px;" type="number" onchange="onCartChange(this, true);" onkeyup="onCartChange(this, false);" min="1" value="{{$cart_item->amount}}" /></td>
                                 <td data-price="{{$cart_item->product->price}}">${{$cart_item->product->price * $cart_item->amount}}</td>
+                                <td>{{$cart_item->product->seller->user->name}}</td>
                                 <td>
                                     <form class="update d-inline-block" action="{{route('users.cart_items.update',['cart_item'=>$cart_item->id])}}" method="post">
                                         @csrf
@@ -81,7 +83,7 @@
                                 <th scope="col"></th>
                                 <th scope="col">小計</th>
                                 <th data-total scope="col">$0</th>
-                                <!-- <th scope="col"><a class="btn btn-success" href="#">結帳</a></th> -->
+								<th scope="col"></th>
                                 <!-- 2-6-20 功能 -->
                                 <th scope="col">
                                     {{-- <a class="btn btn-success" href="{{ route('users.orders.create') }}">結帳</a> --}}
@@ -89,7 +91,6 @@
                                         @csrf
                                         <button class="btn btn-success" type="submit">結帳</button>
                                     </form>
-
                                 </th>
                             </tr>
                         </tfoot>

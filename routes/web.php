@@ -88,6 +88,9 @@ Route::middleware('auth')->group(function () {
 
 		// 2-6-10
 		Route::get('/orders/done', [OrderController::class, 'done_index'])->name('orders.done.index');
+		
+		// 2-6-20
+		Route::post('/orders/{order}/checkout', [OrderController::class, 'checkout'])->name('orders.checkout');
 
 		Route::resource('/orders', OrderController::class);
 		Route::resource('/cart_items', CartItemController::class);

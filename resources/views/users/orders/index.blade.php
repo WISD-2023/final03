@@ -26,7 +26,11 @@
 							  <th>{{$order->orderDetails()->count()}}</th>
 							  <th>{{$order->updated_at}}</th>
 							  <td>
-								<a class="btn btn-success" href="{{route('users.orders.show', ['order'=>$order->id])}}">檢視明細</a>
+								<a class="btn btn-primary" href="{{route('users.orders.show', ['order'=>$order->id])}}">檢視明細</a>
+								<form class="d-inline-block" action="{{route('users.orders.checkout', ['order'=>$order->id])}}" method="post">
+									@csrf
+									<button class="btn btn-success" type="submit" @if($order->status) disabled @endif >前往付款</button>
+								</form>
 								<form class="d-inline-block" onsubmit="return confirm('確定取消訂單嗎？');" action="{{route('users.orders.update', ['order'=>$order->id])}}" method="post">
 									@csrf
 									@method('PATCH')

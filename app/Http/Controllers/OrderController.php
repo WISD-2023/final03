@@ -70,12 +70,6 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        // 產生訂單序號
-        $orderNo = "LA".round(microtime(true)*100).mt_rand(100,999);
-        while(Order::where('no',$orderNo)->get()->count() > 0){
-            $orderNo = "LA".round(microtime(true)*100).mt_rand(100,999);
-        }
-		
         // 提取購物車內容
         $cartItems = auth()->user()->cartItems()->get();
 		
@@ -83,23 +77,47 @@ class OrderController extends Controller
 			return redirect()->route('users.cart_items.index');
 		}
 		else{
-			// 創建訂單
-			$createOrder = new Order();
-			$createOrder->no = $orderNo;
-			$createOrder->user_id = auth()->user()->id;
-			$createOrder->status = '0';
-			$createOrder->save();
-			foreach ($cartItems as $cartItem) {
-				$orderItem = new OrderDetail();
-				$orderItem->order_id = $createOrder->id;
-				$orderItem->product_id = $cartItem->product_id;
-				$orderItem->amount = $cartItem->amount;
-				$orderItem->save();
-				$cartItem->delete();
+			$seller_products = [];
+			foreach($cartItems as $cartItem){
+				// 將同一個賣家的商品放入相同陣列
+				if(isset($seller_products[strval($cartItem->product->seller_id)]) && is_array($seller_products[strval($cartItem->product->seller_id)])){
+					$seller_products[strval($cartItem->product->seller_id)][] = $cartItem;
+				}
+				else{
+					$seller_products[strval($cartItem->product->seller_id)] = array();
+					$seller_products[strval($cartItem->product->seller_id)][] = $cartItem;
+				}
+			}
+			
+			
+			foreach($seller_products as $seller_id => $cart_products){
+				// 產生訂單序號
+				$orderNo = "LA".round(microtime(true)*100).mt_rand(100,999);
+				while(Order::where('no',$orderNo)->get()->count() > 0){
+					$orderNo = "LA".round(microtime(true)*100).mt_rand(100,999);
+				}
+				
+				// 創建訂單
+				$createOrder = new Order();
+				$createOrder->no = $orderNo;
+				$createOrder->seller_id = $seller_id;
+				$createOrder->user_id = auth()->user()->id;
+				$createOrder->status = '0';
+				$createOrder->save();
+				
+				foreach($cart_products as $cart_product){
+					// 創建訂單明細
+					$orderItem = new OrderDetail();
+					$orderItem->order_id = $createOrder->id;
+					$orderItem->product_id = $cart_product->product_id;
+					$orderItem->amount = $cart_product->amount;
+					$orderItem->save();
+					$cart_product->delete();
+				}
 			}
 			
 			// return
-			return $this->checkout($createOrder);
+			return redirect()->route('users.orders.index');
 		}
     }
 
@@ -108,6 +126,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
+		$this->authorize('update', $order);
         //
 		$orderStatus = '';
 
@@ -157,8 +176,10 @@ class OrderController extends Controller
     /**
      * 產生訂單
      */
-    public function checkout(Order $order)
+    public function checkout(Request $request, Order $order)
     {
+		$this->authorize('update', $order);
+		
 		//
 		$mpg = new MPG();
 		$mpg->ServiceURL			= "https://ccore.newebpay.com/MPG/mpg_gateway";		// API服務位置 (此為測試環境網址)
