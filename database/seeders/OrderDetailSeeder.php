@@ -26,5 +26,22 @@ class OrderDetailSeeder extends Seeder
 				},
 			]);
 		});
+		
+		// 合併重複資料(GROUP BY order_id, product_id)
+		// 不在上面的程式碼區塊實作是因為避免迴圈執行的太久
+		OrderDetail::all()->each(function($order){
+			$result = OrderDetail::where('order_id',$order->order_id)->where('product_id',$order->product_id);
+			// 如果目前的明細項目有重複
+			if($result->count() > 1){
+				$result->each(function($s_order) use ($order){
+					if($s_order->id != $order->id){
+						$order->update([
+							'amount'=>$order->amount+$s_order->amount
+						]);
+						$s_order->delete();
+					}
+				});
+			}
+		});
     }
 }
