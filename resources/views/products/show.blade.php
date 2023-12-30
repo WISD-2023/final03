@@ -82,8 +82,8 @@
                                 <label for="like_score">評價分數：</label>
                                 <input type="range" id="like_score" name="like_score" min="1" max="5" step="1" value="3" required />
 
-                                <label for="comment">內容：</label>
-                                <textarea name="comment" class="col" placeholder="寫下你對於此商品的評論吧!" rows="4" required></textarea>
+                                <label for="description">內容：</label>
+                                <textarea name="description" class="col" placeholder="寫下你對於此商品的評論吧!" rows="4" required></textarea>
 
                                 <button class="btn btn-outline-dark mt-2" type="submit">提交評論</button>
 

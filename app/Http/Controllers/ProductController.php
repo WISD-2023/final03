@@ -60,7 +60,7 @@ class ProductController extends Controller
 				$commentsCount = 0;
 
 				foreach($product->orderDetails()->get() as $orderDetail){
-					if($orderDetail->order?->user->id == auth()->user()->id){
+					if($orderDetail->order?->user->id == auth()->user()->id and $orderDetail->order?->status >= 1){
 						$ordersCount++;
 					}
 				}
