@@ -18,6 +18,15 @@
                     <x-nav-link :href="route('sellers.products.index')" :active="request()->routeIs('sellers.products.index')">
                         {{ __('商品列表') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('sellers.orders.index')" :active="request()->routeIs('sellers.orders.index')">
+                        {{ __('所有進行中訂單') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('sellers.orders.done')" :active="request()->routeIs('sellers.orders.done')">
+                        {{ __('所有待出貨訂單') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('sellers.orders.cancel')" :active="request()->routeIs('sellers.orders.cancel')">
+                        {{ __('所有已取消訂單') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -78,6 +87,15 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('sellers.products.index')" :active="request()->routeIs('sellers.products.index')">
                 {{ __('商品列表') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('sellers.orders.index')" :active="request()->routeIs('sellers.orders.index')">
+                {{ __('所有進行中訂單') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('sellers.orders.done')" :active="request()->routeIs('sellers.orders.done')">
+                {{ __('所有待出貨訂單') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('sellers.orders.cancel')" :active="request()->routeIs('sellers.orders.cancel')">
+                {{ __('所有已取消訂單') }}
             </x-responsive-nav-link>
         </div>
 

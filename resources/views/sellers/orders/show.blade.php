@@ -1,11 +1,61 @@
-<!-- 這是一個簡單的 Blade View 範例，你可以根據你的需求進行調整 -->
-<h2>訂單詳細資料</h2>
+<x-seller-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('訂單明細 ' . $order->no . $orderStatus) }}
+        </h2>
+    </x-slot>
+	<script>
+		$(function(){
+			onCountTotal();
+		});
+		
+		function onCountTotal(){
+			let total = 0;
+			$('table tbody td[data-price]').each(function(){
+				let money = parseInt($(this).text().replaceAll('$',''));
+				total+=money;
+			});
 
-<p>訂單編號: {{ $order->order_number }}</p>
-<p>訂單明細: <!-- 顯示訂單明細的相關資訊 --></p>
-<p>訂單狀態: {{ $order->status }}</p>
-<p>付款狀態: {{ $order->payment_status }}</p>
-<p>貨運狀態: {{ $order->shipping_status }}</p>
-<!-- 其他相關欄位 -->
-
-<!-- 你可以根據實際需要顯示更多訂單詳細資訊 -->
+			$('table tfoot th[data-total]').text('$'+total);
+		}
+	</script>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+					<table class="table">
+					  <thead>
+						<tr>
+						  <th scope="col">#</th>
+						  <th scope="col">商品圖片</th>
+						  <th scope="col">商品名稱</th>
+						  <th scope="col">數量</th>
+						  <th scope="col">總金額</th>
+						</tr>
+					  </thead>
+					  <tbody>
+						@foreach($order->orderDetails()->get() as $orderDetail)
+							<tr>
+							  <th scope="row">{{$orderDetail->id}}</th>
+							  <td><img src="{{$orderDetail->product->photo_url}}" width="64"></td>
+							  <td>{{$orderDetail->product->name}}</td>
+							  <td><input style="width:100px;" type="number" value="{{$orderDetail->amount}}" readonly /></td>
+							  <td data-price="{{$orderDetail->product->price}}">${{$orderDetail->product->price * $orderDetail->amount}}</td>
+							</tr>
+						@endforeach
+					  </tbody>
+					  <tfoot>
+						<tr>
+						  <th scope="col"></th>
+						  <th scope="col"></th>
+						  <th scope="col"></th>
+						  <th scope="col">小計</th>
+						  <th data-total scope="col">$0</th>
+						</tr>
+					  </tfoot>
+					</table>
+                </div>
+            </div>
+        </div>
+    </div>
+</x-seller-layout>

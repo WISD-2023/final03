@@ -14,6 +14,10 @@ class Seller extends Model
         'secret_iv',
     ];
 	
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
+	
     public function products(){
         return $this->hasMany(Product::class);
     }

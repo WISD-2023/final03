@@ -144,6 +144,30 @@ class OrderController extends Controller
 
 		return view('users.orders.show', $data);
     }
+	
+    /**
+     * Display the specified resource.
+     */
+    public function seller_show(Order $order)
+    {
+		//$this->authorize('update', $order);
+        //
+		$orderStatus = '';
+
+		switch($order->status){
+			case '1':
+				$orderStatus = ' • 已完成';break;
+			case '-1':
+				$orderStatus = ' • 已取消';break;
+		}
+
+		$data = [
+			'order' => $order,
+			'orderStatus' => $orderStatus
+		];
+
+		return view('sellers.orders.show', $data);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -253,5 +277,25 @@ class OrderController extends Controller
 		];
 
 		return view('sellers.orders.index', $data);
+    }
+	
+    public function seller_cancel_index(){
+		$orders = auth()->user()->seller->orders()->where('status','-1')->get();
+
+		$data = [
+			'orders' => $orders
+		];
+
+		return view('sellers.orders.cancel', $data);
+    }
+	
+    public function seller_done_index(){
+		$orders = auth()->user()->seller->orders()->where('status','1')->get();
+
+		$data = [
+			'orders' => $orders
+		];
+
+		return view('sellers.orders.done', $data);
     }
 }
