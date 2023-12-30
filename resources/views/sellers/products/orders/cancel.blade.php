@@ -14,6 +14,7 @@
                                 <th scope="col">訂單序號</th>
                                 <th scope="col">商品數</th>
                                 <th scope="col">更新日期</th>
+                                <th scope="col">操作</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -23,6 +24,7 @@
                                         <th scope="row">{{$data->order->no}}</th>
                                         <th>{{$data->amount}}</th>
                                         <th>{{$data->updated_at}}</th>
+                                        <th><a class="btn btn-primary" href="{{route('sellers.orders.show', ['order'=>$data->order->id])}}">檢視明細</a></th>
                                     </tr>
                                 @endif
                             @endforeach

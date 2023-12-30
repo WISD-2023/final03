@@ -132,9 +132,11 @@ class OrderController extends Controller
 
 		switch($order->status){
 			case '1':
-				$orderStatus = ' • 已完成';break;
+				$orderStatus = ' • 已付款';break;
 			case '-1':
 				$orderStatus = ' • 已取消';break;
+			case '2':
+				$orderStatus = ' • 已出貨';break;
 		}
 
 		$data = [
@@ -156,9 +158,11 @@ class OrderController extends Controller
 
 		switch($order->status){
 			case '1':
-				$orderStatus = ' • 已完成';break;
+				$orderStatus = ' • 待出貨';break;
 			case '-1':
 				$orderStatus = ' • 已取消';break;
+			case '2':
+				$orderStatus = ' • 已出貨';break;
 		}
 
 		$data = [
