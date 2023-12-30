@@ -80,12 +80,12 @@
 							<form action="{{route('products.comment.store', ['product' => $product]) }}" method="post">
                                 @csrf
                                 <label for="like_score">評價分數：</label>
-                                <input type="number" id="like_score" name="like_score" min="1" max="5" step="1" value="5" required>
+                                <input type="range" id="like_score" name="like_score" min="1" max="5" step="1" value="3" required />
 
-                                <label for="comment">評論：</label>
+                                <label for="comment">內容：</label>
                                 <textarea name="comment" class="col" placeholder="寫下你對於此商品的評論吧!" rows="4" required></textarea>
 
-                                <button class="btn btn-outline-dark mt-auto" type="submit">提交評論</button>
+                                <button class="btn btn-outline-dark mt-2" type="submit">提交評論</button>
 
                                 @if (session('status') === 'comment-updated')
                                 <p

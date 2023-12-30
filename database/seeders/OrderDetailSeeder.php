@@ -19,12 +19,8 @@ class OrderDetailSeeder extends Seeder
 			OrderDetail::factory(10)->create([
 				'order_id' => $order->id,
 				'product_id' => function () use ($order){
-					$result = Product::inRandomOrder()->first();
-					
-					// 買家跟賣家不能是同一個人
-					while($result->seller_id == $order->user_id){
-						$result = Product::inRandomOrder()->first();
-					}
+					// 以訂單的賣家尋找產品明細
+					$result = Product::where('seller_id', $order->seller_id)->inRandomOrder()->first();
 					
 					return $result->id;
 				},

@@ -31,7 +31,6 @@
 						  <th scope="col">商品名稱</th>
 						  <th scope="col">數量</th>
 						  <th scope="col">總金額</th>
-						  <th scope="col">商品賣家</th>
 						</tr>
 					  </thead>
 					  <tbody>
@@ -42,7 +41,6 @@
 							  <td>{{$orderDetail->product->name}}</td>
 							  <td><input style="width:100px;" type="number" value="{{$orderDetail->amount}}" readonly /></td>
 							  <td data-price="{{$orderDetail->product->price}}">${{$orderDetail->product->price * $orderDetail->amount}}</td>
-							  <td>{{$orderDetail->product->seller->user->name}}</td>
 							</tr>
 						@endforeach
 					  </tbody>
@@ -53,7 +51,6 @@
 						  <th scope="col"></th>
 						  <th scope="col">小計</th>
 						  <th data-total scope="col">$0</th>
-						  <th scope="col"></th>
 						</tr>
 					  </tfoot>
 					</table>

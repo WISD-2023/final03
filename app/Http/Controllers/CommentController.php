@@ -61,11 +61,13 @@ class CommentController extends Controller
             $comment->user_id = auth()->user()->id;
             $comment->description = $request->comment;
             $comment->like_score = $request->like_score;
-            // $comment->like_score = 3;
             $comment->save();
 
             return redirect()->route('products.show', ['product'=>$product])->with('status', 'comment-updated');
         }
+		else{
+			return redirect()->route('products.show', ['product'=>$product]);
+		}
     }
 
     /**

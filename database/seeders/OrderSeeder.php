@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -25,6 +26,16 @@ class OrderSeeder extends Seeder
 				
 				Order::factory(1)->create([
 					'no' => $time,
+					'seller_id' => function () use ($user){
+						$result = Product::inRandomOrder()->first();
+						
+						// 買家跟賣家不能是同一個人
+						while($result->seller_id == $user->user_id){
+							$result = Product::inRandomOrder()->first();
+						}
+						
+						return $result->seller_id;
+					},
 					'user_id' => $user->id,
 				]);
 				
