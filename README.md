@@ -29,22 +29,68 @@
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1190723458942902293/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190723458942902293/image.png)
 
 ## ◆賣家 賣家主頁
+![https://cdn.discordapp.com/attachments/1190706814245929090/1190758969342447756/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190758969342447756/image.png)
 
 ## ◆賣家 商品列表
+![https://cdn.discordapp.com/attachments/1190706814245929090/1190759799982411786/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190759799982411786/image.png)
 
 ## ◆賣家 商品編輯/資訊
 
 ## ◆賣家 商品新增
 
 ## ◆賣家 進行中訂單
+![https://cdn.discordapp.com/attachments/1190706814245929090/1190759937710751854/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190759937710751854/image.png)
 
 ## ◆賣家 待出貨訂單
+![https://cdn.discordapp.com/attachments/1190706814245929090/1190760041192636498/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190760041192636498/image.png)
 
 ## ◆賣家 已取消訂單
+![https://cdn.discordapp.com/attachments/1190706814245929090/1190760507699900548/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190760507699900548/image.png)
 
 ## ◆賣家 訂單明細
+![https://cdn.discordapp.com/attachments/1190706814245929090/1190760752932454461/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190760752932454461/image.png)
 
 # 系統的主要功能與負責的同學
+★ 商品
+- Route::get('/', [ProductController::class, 'index'])->name('products.index');
+- Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
+- Route::post('/products/{product}/comment', [CommentController::class, 'store'])->name('products.comment.store')->middleware('auth');
+- Route::get('products/{product}/approx', [ProductController::class, 'approx'])->name('products.approx')->middleware('auth');
+- Route::resource('/products', ProductController::class)->except(['index']);
+
+★ 付款通知
+- Route::post('/payments/complete', [OrderController::class, 'payment_complete'])->name('payments.complete');
+
+★ 會員 (Route Prefix Group: users | Middleware: auth)
+- Route::get('/', function () { return view('users.index'); })->name('index');
+- Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+- Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+- Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+- Route::patch('/{user}/seller', [UserController::class, 'seller_update'])->name('seller');
+- Route::get('/orders/cancel', [OrderController::class, 'cancel_index'])->name('orders.cancel.index');
+- Route::get('/orders/done', [OrderController::class, 'done_index'])->name('orders.done.index');
+- Route::post('/orders/{order}/checkout', [OrderController::class, 'checkout'])->name('orders.checkout');
+- Route::resource('/orders', OrderController::class);
+- Route::resource('/cart_items', CartItemController::class);
+
+★ 賣家 (Route Prefix Group: sellers | Middleware: auth, seller.auth)
+- Route::get('/', function () { return view('sellers.index'); })->name('index');
+- Route::get('/products/{product}/orders', [ProductController::class, 'seller_progress_index'])->name('products.orders.index');
+- Route::get('/products/{product}/orders/cancel', [ProductController::class, 'seller_cancel_index'])->name('products.orders.cancel');
+- Route::get('/products/{product}/orders/done', [ProductController::class, 'seller_done_index'])->name('products.orders.done');
+- Route::get('/products', [ProductController::class, 'seller_index'])->name('products.index');
+- Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+- Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+- Route::patch('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+- Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+- Route::get('/products/{product}/comments', [CommentController::class, 'index'])->name('comments.index');
+- Route::get('/hash_keys/create', [HashKeyController::class, 'create'])->name('hash_keys.index');
+- Route::post('/hash_keys', [HashKeyController::class, 'store'])->name('hash_keys.store');
+- Route::get('/orders/', [OrderController::class, 'seller_index'])->name('orders.index');
+- Route::get('/orders/cancel', [OrderController::class, 'seller_cancel_index'])->name('orders.cancel');
+- Route::get('/orders/done', [OrderController::class, 'seller_done_index'])->name('orders.done');
+- Route::get('/orders/{order}', [OrderController::class, 'seller_show'])->name('orders.show');
+- Route::patch('/orders/{order}', [OrderController::class, 'seller_update'])->name('orders.update');
 
 ## ERD
 
