@@ -49,7 +49,7 @@ class CartItemController extends Controller
 			}
 		}
 		
-		return redirect()->route('products.index');
+		return redirect()->back();
     }
 
     /**

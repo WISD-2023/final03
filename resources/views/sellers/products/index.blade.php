@@ -3,6 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{-- {{ __('此商品 '.$product_name.'('.$product_id.') 所有 待出貨 訂單') }} --}}
             {{ __('商品列表') }}
+			<a class="btn btn-success" href="#">新增商品</a>
         </h2>
     </x-slot>
     <div class="py-12">
@@ -30,6 +31,13 @@
                                     <td>{{$data->category->name}}</td>
                                     <td>{{$data->amount}}</td>
                                     <td>{{$data->updated_at}}</td>
+                                    <td>
+										<a class="btn btn-warning" href="#">修改</a>
+										<a class="btn btn-danger" href="#">刪除</a>
+										<a class="btn btn-primary" href="{{ route('sellers.products.orders.index', ['product'=>$data->id]) }}">進行中</a>
+										<a class="btn btn-primary" href="{{ route('sellers.products.orders.done', ['product'=>$data->id]) }}">待出貨</a>
+										<a class="btn btn-primary" href="{{ route('sellers.products.orders.cancel', ['product'=>$data->id]) }}">已取消</a>
+									</td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -164,6 +164,19 @@ class OrderController extends Controller
 		$order->update(['status'=>'-1']);
 		return redirect()->route('users.orders.index');
     }
+	
+    /**
+     * Update the specified resource in storage.
+     */
+    public function seller_update(Request $request, Order $order)
+    {
+        //
+		$this->authorize('seller_update', $order);
+
+		$order->update(['status'=>'2']);
+		
+		return redirect()->back();
+    }
 
     /**
      * Remove the specified resource from storage.

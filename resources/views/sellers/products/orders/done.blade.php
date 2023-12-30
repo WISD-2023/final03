@@ -1,8 +1,7 @@
 <x-seller-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{-- {{ __('此商品 '.$product_name.'('.$product_id.') 所有 待出貨 訂單') }} --}}
-            {{ __('此商品 '.$product_name.' 所有 完成 訂單') }}
+            {{ __('商品 '.$product_name.' 所有待出貨訂單') }}
         </h2>
     </x-slot>
     <div class="py-12">
@@ -15,6 +14,7 @@
                                 <th scope="col">訂單序號</th>
                                 <th scope="col">商品數</th>
                                 <th scope="col">更新日期</th>
+                                <th scope="col">操作</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -24,6 +24,13 @@
                                         <th scope="row">{{$data->order->no}}</th>
                                         <th>{{$data->amount}}</th>
                                         <th>{{$data->updated_at}}</th>
+                                        <th>
+											<form class="d-inline-block" action="{{route('sellers.orders.update', ['order'=>$data->order->id])}}" method="post">
+												@csrf
+												@method('PATCH')
+												<button class="btn btn-warning" type="submit">標示為已出貨</button>
+											</form>
+										</th>
                                     </tr>
                                 @endif
                             @endforeach

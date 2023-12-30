@@ -46,6 +46,8 @@ Route::middleware('auth')->group(function () {
 
         // 2-7-3
         Route::get('/products/{product}/orders/done', [ProductController::class, 'seller_done_index'])->name('products.orders.done');
+		
+        Route::patch('/orders/{order}', [OrderController::class, 'seller_update'])->name('orders.update');
 
 		// 2-7-4
 		Route::get('/products', [ProductController::class, 'seller_index'])->name('products.index');
