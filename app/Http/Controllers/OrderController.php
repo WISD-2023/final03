@@ -244,4 +244,14 @@ class OrderController extends Controller
 			}
 		}
 	}
+	
+    public function seller_index(){
+		$orders = auth()->user()->seller->orders()->where('status','0')->get();
+
+		$data = [
+			'orders' => $orders
+		];
+
+		return view('sellers.orders.index', $data);
+    }
 }
