@@ -118,28 +118,28 @@
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1191088886521274518/scama.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191088886521274518/scama.png)
 
 ## 實際資料表欄位設計
-★ 會員 users
+★ 會員 users <br/>
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1191089106797740132/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191089106797740132/image.png)
 
-★ 賣家 sellers
+★ 賣家 sellers <br/>
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1191089346288287815/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191089346288287815/image.png)
 
-★ 訂單 orders
+★ 訂單 orders <br/>
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1191089495794270259/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191089495794270259/image.png)
 
-★ 訂單明細 order_details
+★ 訂單明細 order_details <br/>
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1191089696047108267/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191089696047108267/image.png)
 
-★ 商品 products
+★ 商品 products <br/>
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1191089820630532148/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191089820630532148/image.png)
 
-★ 商品種類 categoies
+★ 商品種類 categoies <br/>
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1191089996665458819/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191089996665458819/image.png)
 
-★ 評論 comments
+★ 評論 comments <br/>
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1191090166090182746/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191090166090182746/image.png)
 
-★ 購物車 cart_items
+★ 購物車 cart_items <br/>
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1191090289474031686/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191090289474031686/image.png)
 
 ## 初始專案與負責資料庫的同學 
