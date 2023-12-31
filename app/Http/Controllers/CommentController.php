@@ -13,9 +13,13 @@ class CommentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Product $product)
     {
-        //
+        $data = [
+            'comments' => $product->comments()->get()
+        ];
+
+        return view('sellers.products.comments', $data);
     }
 
     /**
@@ -47,13 +51,13 @@ class CommentController extends Controller
                 $commentsCount++;
             }
         }
-		
+
         // 如果完成訂單數大於留言數，則可以留言
         if($ordersCount > $commentsCount){
             $canLeaveComment = true;
         }
         // return view('products.show');
-		
+
         if($canLeaveComment){
             // 儲存到資料庫
             $comment = new Comment();
