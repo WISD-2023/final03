@@ -20,16 +20,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// 2-6-3
 Route::get('/', [ProductController::class, 'index'])->name('products.index');
+
+// 2-6-4
 Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
+
+// 2-6-5
+Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+
 // 2-6-14
 Route::post('/products/{product}/comment', [CommentController::class, 'store'])->name('products.comment.store')->middleware('auth');
 
 // 2-6-15
 Route::get('products/{product}/approx', [ProductController::class, 'approx'])->name('products.approx')->middleware('auth');
 
-Route::resource('/products', ProductController::class)->except(['index']);
-
+// 2-6-20
 Route::post('/payments/complete', [OrderController::class, 'payment_complete'])->name('payments.complete');
 
 Route::middleware('auth')->group(function () {
@@ -52,6 +58,7 @@ Route::middleware('auth')->group(function () {
 
         // 2-7-5
         Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+        Route::post('/products', [ProductController::class, 'store'])->name('products.store');
 
         // 2-7-6
         Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
@@ -89,8 +96,7 @@ Route::middleware('auth')->group(function () {
 		})->name('index');
 
 
-
-
+		// 2-6-6
 		Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 		Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 		Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
