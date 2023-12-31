@@ -157,7 +157,7 @@
 artisan db:seed
 ```
 
-## 系統使用者測試帳號
+## 使用者測試帳號
 - 帳號: user@localhost
 - 密碼: password
 
