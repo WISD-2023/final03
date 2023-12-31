@@ -152,7 +152,7 @@ class OrderController extends Controller
      */
     public function seller_show(Order $order)
     {
-		//$this->authorize('update', $order);
+		$this->authorize('seller_update', $order);
         //
 		$orderStatus = '';
 

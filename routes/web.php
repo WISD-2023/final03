@@ -64,7 +64,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/products/{product}/comments', [CommentController::class, 'index'])->name('comments.index');
 
         // 2-7-9
-        Route::get('/hash_keys/create', [HashKeyController::class, 'create'])->name('hash_keys.index');
+        Route::get('/hash_keys', [HashKeyController::class, 'index'])->name('hash_keys.index');
         Route::post('/hash_keys', [HashKeyController::class, 'store'])->name('hash_keys.store');
 		
         // 2-7-10

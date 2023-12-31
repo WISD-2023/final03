@@ -1,8 +1,8 @@
 <x-seller-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            @section('page-title', '首頁')
-            {{ __('訂單資訊加密') }}
+            @section('page-title', '藍新金流設定')
+            {{ __('藍新金流設定') }}
         </h2>
     </x-slot>
 

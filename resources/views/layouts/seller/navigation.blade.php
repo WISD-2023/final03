@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('sellers.products.index')" :active="request()->routeIs('sellers.products.index')">
                         {{ __('商品列表') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('sellers.hash_keys.index')" :active="request()->routeIs('sellers.hash_keys.index')">
+                        {{ __('藍新金流設定') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('sellers.orders.index')" :active="request()->routeIs('sellers.orders.index')">
                         {{ __('所有進行中訂單') }}
                     </x-nav-link>
@@ -87,6 +90,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('sellers.products.index')" :active="request()->routeIs('sellers.products.index')">
                 {{ __('商品列表') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('sellers.hash_keys.index')" :active="request()->routeIs('sellers.hash_keys.index')">
+                {{ __('藍新金流設定') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('sellers.orders.index')" :active="request()->routeIs('sellers.orders.index')">
                 {{ __('所有進行中訂單') }}

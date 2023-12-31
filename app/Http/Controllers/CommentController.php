@@ -15,6 +15,8 @@ class CommentController extends Controller
      */
     public function index(Product $product)
     {
+		$this->authorize('update', $product);
+		
         $data = [
             'product_name' => $product->name,
             'comments' => $product->comments()->get()

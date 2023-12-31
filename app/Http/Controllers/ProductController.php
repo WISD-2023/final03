@@ -35,10 +35,8 @@ class ProductController extends Controller
 			'categories'=>Category::all(),
 		]);
     }
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        //$product = Product::create($request->all());
-        //dd($request);
         $product = new Product();
         $product->category_id = $request->category_id;
         $product->seller_id = auth()->user()->id;
@@ -101,6 +99,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+		$this->authorize('update', $product);
+		
         return view('sellers.products.edit', [
 			'product'=>$product,
 			'categories'=>Category::all(),
@@ -110,8 +110,10 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(UpdateProductRequest $request, Product $product)
     {
+		$this->authorize('update', $product);
+		
         $product->update($request->all());
         return redirect()->route('sellers.products.index');
     }
@@ -122,6 +124,8 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+		$this->authorize('update', $product);
+		
         $product->delete();
         return redirect()->route('sellers.products.index');
     }
@@ -156,6 +160,8 @@ class ProductController extends Controller
     }
 
     public function seller_progress_index(Product $product){
+		$this->authorize('update', $product);
+		
         return view('sellers.products.orders.index', [
             'product_id'=>$product->id,
             'product_name'=>$product->name,
@@ -164,6 +170,8 @@ class ProductController extends Controller
     }
 
     public function seller_cancel_index(Product $product){
+		$this->authorize('update', $product);
+		
         return view('sellers.products.orders.cancel', [
             'product_id'=>$product->id,
             'product_name'=>$product->name,
@@ -172,6 +180,8 @@ class ProductController extends Controller
     }
 
     public function seller_done_index(Product $product){
+		$this->authorize('update', $product);
+		
         return view('sellers.products.orders.done', [
             'product_id'=>$product->id,
             'product_name'=>$product->name,

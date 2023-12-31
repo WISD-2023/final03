@@ -12,6 +12,7 @@ class HashKeyController extends Controller
     public function index()
     {
         //
+		return view('sellers.hash_keys.index');
     }
 
     /**
@@ -20,7 +21,6 @@ class HashKeyController extends Controller
     public function create()
     {
         //
-        return view('sellers.hash_keys.index');
     }
 
     /**
