@@ -158,12 +158,12 @@ artisan db:seed
 ```
 
 ## 使用者測試帳號
-- 買家
- - 帳號: user@localhost
- - 密碼: password
-- 賣家
- - 帳號: seller@localhost
- - 密碼: password
+1. 買家
+ - 帳號: `user@localhost`
+ - 密碼: `password`
+2. 賣家
+ - 帳號: `seller@localhost`
+ - 密碼: `password`
 
 ## 系統復原步驟
 1. 複製 git@github.com:WISD-2023/final03.git (或是[https://github.com/WISD-2023/final03.git](https://github.com/WISD-2023/final03.git))
