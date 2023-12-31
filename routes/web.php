@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
 
         // 2-7-3
         Route::get('/products/{product}/orders/done', [ProductController::class, 'seller_done_index'])->name('products.orders.done');
-
+		
 		// 2-7-4
 		Route::get('/products', [ProductController::class, 'seller_index'])->name('products.index');
 
@@ -66,6 +66,21 @@ Route::middleware('auth')->group(function () {
         // 2-7-9
         Route::get('/hash_keys/create', [HashKeyController::class, 'create'])->name('hash_keys.index');
         Route::post('/hash_keys', [HashKeyController::class, 'store'])->name('hash_keys.store');
+		
+        // 2-7-10
+        Route::get('/orders/', [OrderController::class, 'seller_index'])->name('orders.index');
+
+		// 2-7-11
+		Route::get('/orders/cancel', [OrderController::class, 'seller_cancel_index'])->name('orders.cancel');
+
+        // 2-7-12
+        Route::get('/orders/done', [OrderController::class, 'seller_done_index'])->name('orders.done');
+		
+        // 2-7-13
+        Route::get('/orders/{order}', [OrderController::class, 'seller_show'])->name('orders.show');
+		
+		// 2-7-14
+		Route::patch('/orders/{order}', [OrderController::class, 'seller_update'])->name('orders.update');
 	});
 
 	Route::name("users.")->prefix('users')->group(function () {
@@ -88,6 +103,9 @@ Route::middleware('auth')->group(function () {
 
 		// 2-6-10
 		Route::get('/orders/done', [OrderController::class, 'done_index'])->name('orders.done.index');
+		
+		// 2-6-20
+		Route::post('/orders/{order}/checkout', [OrderController::class, 'checkout'])->name('orders.checkout');
 
 		Route::resource('/orders', OrderController::class);
 		Route::resource('/cart_items', CartItemController::class);

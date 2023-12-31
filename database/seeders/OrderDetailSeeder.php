@@ -19,16 +19,29 @@ class OrderDetailSeeder extends Seeder
 			OrderDetail::factory(10)->create([
 				'order_id' => $order->id,
 				'product_id' => function () use ($order){
-					$result = Product::inRandomOrder()->first();
-					
-					// 買家跟賣家不能是同一個人
-					while($result->seller_id == $order->user_id){
-						$result = Product::inRandomOrder()->first();
-					}
+					// 以訂單的賣家尋找產品明細
+					$result = Product::where('seller_id', $order->seller_id)->inRandomOrder()->first();
 					
 					return $result->id;
 				},
 			]);
+		});
+		
+		// 合併重複資料(GROUP BY order_id, product_id)
+		// 不在上面的程式碼區塊實作是因為避免迴圈執行的太久
+		OrderDetail::all()->each(function($order){
+			$result = OrderDetail::where('order_id',$order->order_id)->where('product_id',$order->product_id);
+			// 如果目前的明細項目有重複
+			if($result->count() > 1){
+				$result->each(function($s_order) use ($order){
+					if($s_order->id != $order->id){
+						$order->update([
+							'amount'=>$order->amount+$s_order->amount
+						]);
+						$s_order->delete();
+					}
+				});
+			}
 		});
     }
 }

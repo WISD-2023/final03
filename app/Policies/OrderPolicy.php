@@ -40,6 +40,15 @@ class OrderPolicy
         //
 		return $order->user()->is($user);
     }
+	
+    /**
+     * Determine whether the user can update the model.
+     */
+    public function seller_update(User $user, Order $order): bool
+    {
+        //
+		return $order->seller->user()->is($user);
+    }
 
     /**
      * Determine whether the user can delete the model.

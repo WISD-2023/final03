@@ -1,24 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+			@section('page-title', '訂單明細 ' . $order->no . $orderStatus)
             {{ __('訂單明細 ' . $order->no . $orderStatus) }}
         </h2>
     </x-slot>
-	<script>
-		$(function(){
-			onCountTotal();
-		});
-		
-		function onCountTotal(){
-			let total = 0;
-			$('table tbody td[data-price]').each(function(){
-				let money = parseInt($(this).text().replaceAll('$',''));
-				total+=money;
-			});
-
-			$('table tfoot th[data-total]').text('$'+total);
-		}
-	</script>
+	<script src="{{asset('js/priceCounter.js')}}"></script>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -31,7 +18,6 @@
 						  <th scope="col">商品名稱</th>
 						  <th scope="col">數量</th>
 						  <th scope="col">總金額</th>
-						  <th scope="col">商品賣家</th>
 						</tr>
 					  </thead>
 					  <tbody>
@@ -42,7 +28,6 @@
 							  <td>{{$orderDetail->product->name}}</td>
 							  <td><input style="width:100px;" type="number" value="{{$orderDetail->amount}}" readonly /></td>
 							  <td data-price="{{$orderDetail->product->price}}">${{$orderDetail->product->price * $orderDetail->amount}}</td>
-							  <td>{{$orderDetail->product->seller->user->name}}</td>
 							</tr>
 						@endforeach
 					  </tbody>
@@ -53,7 +38,6 @@
 						  <th scope="col"></th>
 						  <th scope="col">小計</th>
 						  <th data-total scope="col">$0</th>
-						  <th scope="col"></th>
 						</tr>
 					  </tfoot>
 					</table>

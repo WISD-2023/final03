@@ -29,7 +29,7 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Product $product)
+    public function store(StoreCommentRequest $request, Product $product)
     {
         // dd($product);
         $canLeaveComment = false;
@@ -37,7 +37,7 @@ class CommentController extends Controller
         $commentsCount = 0;
 
         foreach($product->orderDetails()->get() as $orderDetail){
-            if($orderDetail->order?->user->id == auth()->user()->id and $orderDetail->order?->status == 0){
+            if($orderDetail->order?->user->id == auth()->user()->id and $orderDetail->order?->status >= 1){
                 $ordersCount++;
             }
         }
@@ -47,25 +47,27 @@ class CommentController extends Controller
                 $commentsCount++;
             }
         }
-
+		
         // 如果完成訂單數大於留言數，則可以留言
         if($ordersCount > $commentsCount){
             $canLeaveComment = true;
         }
         // return view('products.show');
-
+		
         if($canLeaveComment){
             // 儲存到資料庫
             $comment = new Comment();
             $comment->product_id = $product->id;
             $comment->user_id = auth()->user()->id;
-            $comment->description = $request->comment;
+            $comment->description = $request->description;
             $comment->like_score = $request->like_score;
-            // $comment->like_score = 3;
             $comment->save();
 
             return redirect()->route('products.show', ['product'=>$product])->with('status', 'comment-updated');
         }
+		else{
+			return redirect()->route('products.show', ['product'=>$product]);
+		}
     }
 
     /**

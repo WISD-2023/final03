@@ -1,6 +1,7 @@
 <x-seller-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            @section('page-title', '首頁')
             {{ __('賣家中心') }}
         </h2>
     </x-slot>
