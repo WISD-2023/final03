@@ -32,7 +32,7 @@
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1190758969342447756/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190758969342447756/image.png)
 
 ## ◆賣家 商品列表
-![https://cdn.discordapp.com/attachments/1190706814245929090/1190759799982411786/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190759799982411786/image.png)
+![https://cdn.discordapp.com/attachments/1190706814245929090/1190945110851072061/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190945110851072061/image.png)
 
 ## ◆賣家 商品編輯/資訊
 
