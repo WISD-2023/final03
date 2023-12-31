@@ -1,6 +1,7 @@
 <x-seller-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+			@section('page-title', '商品 '.$product_name.' 所有進行中訂單')
             {{ __('商品 '.$product_name.' 所有進行中訂單') }}
         </h2>
     </x-slot>

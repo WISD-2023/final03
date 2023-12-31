@@ -1,6 +1,7 @@
 <x-seller-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+			@section('page-title', '所有已取消訂單')
             {{ __('所有已取消訂單') }}
         </h2>
     </x-slot>

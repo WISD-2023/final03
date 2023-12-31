@@ -1,7 +1,7 @@
 <x-seller-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{-- {{ __('此商品 '.$product_name.'('.$product_id.') 所有 待出貨 訂單') }} --}}
+            @section('page-title', '商品列表')
             {{ __('商品列表') }}
 			<a class="btn btn-success" href="{{ route('sellers.products.create') }}">新增商品</a>
         </h2>

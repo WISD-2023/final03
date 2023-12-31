@@ -1,6 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+			@section('page-title', '所有已完成訂單')
             {{ __('所有已完成訂單') }}
         </h2>
     </x-slot>

@@ -1,6 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+			@section('page-title', '購物車')
             {{ __('購物車') }}
         </h2>
     </x-slot>

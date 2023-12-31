@@ -1,6 +1,7 @@
 <x-seller-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+			@section('page-title', '訂單明細 ' . $order->no . $orderStatus)
             {{ __('訂單明細 ' . $order->no . $orderStatus) }}
         </h2>
     </x-slot>
