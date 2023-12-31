@@ -15,8 +15,12 @@ class UserSeeder extends Seeder
     {
         //
 		User::factory(1)->create([
+			'email' => 'seller@localhost'
+		]);
+		User::factory(4)->create();
+		User::factory(1)->create([
 			'email' => 'user@localhost'
 		]);
-		User::factory(9)->create();
+		User::factory(4)->create();
     }
 }
