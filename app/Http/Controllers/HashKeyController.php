@@ -20,6 +20,7 @@ class HashKeyController extends Controller
     public function create()
     {
         //
+        return view('sellers.hash_keys.index');
     }
 
     /**
@@ -28,6 +29,12 @@ class HashKeyController extends Controller
     public function store(Request $request)
     {
         //
+        $seller = auth()->user()->seller;
+        $seller->merchant = $request->merchant;
+        $seller->secret_key = $request->secret_key;
+        $seller->secret_iv = $request->secret_iv;
+        $seller->save();
+        return redirect()->route('sellers.hash_keys.index');
     }
 
     /**
