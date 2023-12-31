@@ -16,6 +16,7 @@ class CommentController extends Controller
     public function index(Product $product)
     {
         $data = [
+            'product_name' => $product->name,
             'comments' => $product->comments()->get()
         ];
 

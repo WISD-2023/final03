@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
@@ -23,10 +24,6 @@ class ProductController extends Controller
 			'cart_items_amount'=>$cartItemsAmount
 		];
 		return view('products.index', $data);
-
-        // // 在這裡加入顯示商品列表的邏輯
-        // $products = Product::where('seller_id', auth()->user()->id)->get();
-        // return view('sellers.products.index', compact('products'));
     }
 
     /**
@@ -34,7 +31,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('sellers.products.create');
+        return view('sellers.products.create',[
+			'categories'=>Category::all(),
+		]);
     }
     public function store(Request $request)
     {
@@ -102,8 +101,10 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-
-        return view('sellers.products.edit', ['product'=>$product]);
+        return view('sellers.products.edit', [
+			'product'=>$product,
+			'categories'=>Category::all(),
+		]);
     }
 
     /**
