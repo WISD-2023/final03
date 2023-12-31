@@ -20,7 +20,7 @@ class ProductFactory extends Factory
         return [
             'name' => $this->faker->company,
             'description' => $this->faker->paragraph,
-            'photo_url' => 'https://cdn.discordapp.com/attachments/631735793961926656/1184145570542125198/image.png',
+            'photo_url' => 'https://picsum.photos/seed/'.$this->faker->company.'/223/149',
             'amount' => mt_rand(2000,15000),
             'format' => $arr[mt_rand(0,5)],
             'price' => mt_rand(5,200),
