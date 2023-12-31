@@ -34,17 +34,25 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('sellers.products.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreProductRequest $request)
+    public function store(Request $request)
     {
-        //
+        //$product = Product::create($request->all());
+        //dd($request);
+        $product = new Product();
+        $product->category_id = $request->category_id;
+        $product->seller_id = auth()->user()->id;
+        $product->description = $request->description;
+        $product->name = $request->name;
+        $product->photo_url = $request->photo_url;
+        $product->amount = $request->amount;
+        $product->format = $request->format;
+        $product->price = $request->price;
+        $product->is_display = $request->is_display;
+        $product->save();
+        return redirect()->route('sellers.products.index');
     }
-
     /**
      * Display the specified resource.
      */
