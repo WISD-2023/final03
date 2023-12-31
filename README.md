@@ -166,9 +166,9 @@ artisan db:seed
  - 密碼: `password`
 
 ## 系統復原步驟
-1. 複製 git@github.com:WISD-2023/final03.git (或是[https://github.com/WISD-2023/final03.git](https://github.com/WISD-2023/final03.git))
+1. 複製 ``git@github.com:WISD-2023/final03.git`` (或是[https://github.com/WISD-2023/final03.git](https://github.com/WISD-2023/final03.git))
 
-   打開 cmder，進入 www，輸入 `git clone git@github.com:WISD-2023/final03.git` 切換至專案所在資料夾 => `cd final03`
+   打開 cmder，進入 www，輸入 `git clone git@github.com:WISD-2023/final03.git` 切換至專案所在資料夾 => `cd final03` 或是 系統環境已經安裝 composer, nodejs, npm, php 並且 sql port 為 33060 可以直接執行 ``build.bat`` 自動化腳本(for Windows)
 2. cmder 輸入以下命令，復原專案
    - `composer install`
    - `cp .env.example .env`
@@ -193,25 +193,25 @@ artisan db:seed
 ## 系統開發人員與工作分配
 
 - [3B032117 吳宇翰](https://github.com/3B032117)
- - 購物網站首頁、顯示商品、搜尋商品功能
- - 會員顯示訂單、編輯訂單、訂單前往付款功能
- - 會員購物車功能
- - 期中報告製作/修訂
- - 前端編輯/設計/排版
- - 資料庫製作
- - 建置 Controller、Model、Migration
- - 身分驗證(middleware)
- - 表單驗證(policy、rules)
+    - 購物網站首頁、顯示商品、搜尋商品功能
+    - 會員顯示訂單、編輯訂單、訂單前往付款功能
+    - 會員購物車功能
+    - 期中報告製作/修訂
+    - 前端編輯/設計/排版
+    - 資料庫製作
+    - 建置 Controller、Model、Migration
+    - 身分驗證(middleware)
+    - 表單驗證(policy、rules)
 
 - [3B032110 劉軒宏](https://github.com/3B032110)
- - 會員結帳功能、會員評論功能、會員商品追蹤功能
- - 會員申請為賣家功能
- - 賣家訂單查詢
- - 賣家商品訂單查詢
- - 前端編輯/排版
- - 期中報告修訂
+    - 會員結帳功能、會員評論功能、會員商品追蹤功能
+    - 會員申請為賣家功能
+    - 賣家訂單查詢
+    - 賣家商品訂單查詢
+    - 前端編輯/排版
+    - 期中報告修訂
 
 - [3B032107 廖家禾](https://github.com/3B032107)
- - 賣家商品新增、刪除、修改功能
- - 賣家查看評論功能
- - 賣家更新HashKey及HashIV功能
+    - 賣家商品新增、刪除、修改功能
+    - 賣家查看評論功能
+    - 賣家更新HashKey及HashIV功能
