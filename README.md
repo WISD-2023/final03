@@ -38,6 +38,8 @@
 
 ## ◆賣家 商品新增
 
+## ◆賣家 商品評論
+
 ## ◆賣家 進行中訂單
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1190759937710751854/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190759937710751854/image.png)
 
