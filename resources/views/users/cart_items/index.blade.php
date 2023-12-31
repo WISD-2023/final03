@@ -58,7 +58,6 @@
 								<th scope="col"></th>
                                 <!-- 2-6-20 功能 -->
                                 <th scope="col">
-                                    {{-- <a class="btn btn-success" href="{{ route('users.orders.create') }}">結帳</a> --}}
                                     <form action="{{ route('users.orders.store') }}" method="post">
                                         @csrf
                                         <button class="btn btn-success" type="submit">結帳</button>

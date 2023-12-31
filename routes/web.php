@@ -113,8 +113,15 @@ Route::middleware('auth')->group(function () {
 		// 2-6-20
 		Route::post('/orders/{order}/checkout', [OrderController::class, 'checkout'])->name('orders.checkout');
 
-		Route::resource('/orders', OrderController::class);
-		Route::resource('/cart_items', CartItemController::class);
+		Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+		Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
+		Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+		Route::patch('/orders/{order}', [OrderController::class, 'update'])->name('orders.update');
+		
+		Route::get('/cart_items', [CartItemController::class, 'index'])->name('cart_items.index');
+		Route::post('/cart_items', [CartItemController::class, 'store'])->name('cart_items.store');
+		Route::patch('/cart_items/{cart_item}', [CartItemController::class, 'update'])->name('cart_items.update');
+		Route::delete('/cart_items/{cart_item}', [CartItemController::class, 'destroy'])->name('cart_items.destroy');
 	});
 });
 
