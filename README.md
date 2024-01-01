@@ -189,7 +189,9 @@ artisan db:seed
 
 > [!IMPORTANT]
 > 由於本專案有使用藍新金流API串接付款頁面，因此商店ID、祕鑰、祕鑰IV都屬於藍新金流所提供，且為了要使付款成功回傳更新訂單狀態功能正常，請務必將專案架設於公開網路上，否則該功能將會不完整。
-   
+>
+> [!IMPORTANT]
+> 如果你有使用 proxy 來代理laravel專案，需要在 ``app\Http\Middleware\TrustProxies.php`` 中加入你的上游 proxy IP，否則會出現 Mixed Content 錯誤。
 ## 系統開發人員與工作分配
 
 - [3B032117 吳宇翰](https://github.com/3B032117)
