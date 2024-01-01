@@ -228,9 +228,9 @@ class OrderController extends Controller
 		$mpg->NotifyURL				= route('payments.complete');	// 支付通知網址
 		$mpg->ClientBackURL			= route('users.orders.index');  // 返回商店網址
 		
-		$mpg->HashKey				= auth()->user()->seller->secret_key;	// Hashkey
-		$mpg->HashIV				= auth()->user()->seller->secret_iv;	// HashIV
-		$mpg->MerchantID			= auth()->user()->seller->merchant;				// MerchantID
+		$mpg->HashKey				= $order->seller->secret_key;	// Hashkey
+		$mpg->HashIV				= $order->seller->secret_iv;	// HashIV
+		$mpg->MerchantID			= $order->seller->merchant;				// MerchantID
 		$mpg->MerchantTradeNo		= $order->no;						// 訂單編號
 		$mpg->Version				= '1.6';						// API程式版本
 		
