@@ -12,7 +12,7 @@ class TrustProxies extends Middleware
      *
      * @var array<int, string>|string|null
      */
-	protected $proxies
+	protected $proxies;
 	// 如果有 代理伺服器來 PROXY 的話 需要把上游 proxy IP 取消註解輸入在底下，並把原先的上方的給註解
     //protected $proxies = [
     //    '192.168.50.2',
