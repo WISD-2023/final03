@@ -10,7 +10,7 @@
 				<div class="col mb-5">
 					<div class="card h-100">
 						<!-- Product image-->
-						<a href="{{route('products.show', ['product'=>$product->id])}}"><img class="card-img-top" src="{{$product->photo_url}}" /></a>
+						<a href="{{route('products.show', ['product'=>$product->id])}}"><img height="179" class="card-img-top" src="{{$product->photo_url}}" /></a>
 						<!-- Product details-->
 						<div class="card-body p-4">
 							<div class="text-center">
@@ -27,8 +27,8 @@
 								@method('POST')
 								<input name="product" value="{{$product->id}}" type="hidden" />
 								<div class="text-center">
-									<button class="btn btn-outline-dark mt-auto" type="submit">加到購物車</button>
-									<a href="{{route('products.approx',['product'=>$product->id])}}" class="btn btn-outline-dark mt-auto" data-type="approx">追蹤</a>
+									<button class="btn btn-outline-dark mt-2" type="submit">加到購物車</button>
+									<a href="{{route('products.approx',['product'=>$product->id])}}" class="btn btn-outline-dark mt-2" data-type="approx">追蹤</a>
 								</div>
 							</form>
 						</div>

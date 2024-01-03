@@ -7,11 +7,11 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-			<div class="container w-100 d-flex">
-				<div>
-					<img class="img-thumbnail" src="{{$product->photo_url}}" />
+			<div class="container w-100 d-lg-flex d-block">
+				<div class="col-auto">
+					<img class="img-thumbnail" src="{{$product->photo_url}}" width="476" />
 				</div>
-				<div class="text-left pl-3 pt-2 w-50">
+				<div class="text-left pl-3 pt-2 col">
 					<h3>{{$product->name}}</h3>
 					<p>
 						賣家 {{$product->seller->user->name}} • 分類 {{$product->category->name}} • 更新時間 {{$product->updated_at}}
@@ -56,7 +56,7 @@
 			</div>
 			<div class="container w-100">
 				<div><h3>評論區</h3></div>
-				<div class="card p-2">
+				<div class="card p-2 m-overflow">
 					<!-- 使用者評論 -->
 					<table class="table">
 						@foreach($product->comments()->get() as $comment)

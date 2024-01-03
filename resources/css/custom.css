@@ -9,3 +9,14 @@ a[data-type="approx"]:hover{
 p{
 	margin-bottom: 0; 
 }
+
+.m-overflow{
+	width: 100%;
+	overflow-x: auto;
+}
+
+@media screen and (max-width: 768px){
+	.table td, .table th{
+		white-space: nowrap;
+	}
+}
