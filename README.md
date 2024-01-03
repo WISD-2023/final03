@@ -1,61 +1,80 @@
 # 系統畫面
 
 ## ◆訪客/會員 首頁
+- 購物網站首頁、商品列表及登入按鈕
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1190706817634947112/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190706817634947112/image.png)
 
 ## ◆訪客/會員 查看商品資訊
+- 商品詳細資訊，包含賣家、分類、庫存、價格及評論，可留言的買家會再出現留言區
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1190707319558914088/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190707319558914088/image.png)
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1190707360252043324/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190707360252043324/image.png)
 
 ## ◆會員 會員主頁
+- 會員首頁，用於切換到會員功能的各路由
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1190707762309640193/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190707762309640193/image.png)
 
 ## ◆會員 購物車
+- 會員商品購物車，可修改商品數量或刪除購物車商品，按下「結帳」會將購物車商品依賣家產生訂單
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1190719299422269530/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190719299422269530/image.png)
 
 ## ◆會員 進行中訂單
+- 會員所有尚未付款的訂單，按下「前往付款」按鈕可以前往藍新金流付款頁面
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1190720793806643260/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190720793806643260/image.png)
 
 ## ◆會員 已完成訂單
+- 會員所有已付款的訂單
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1190721298930864219/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190721298930864219/image.png)
 
 ## ◆會員 已取消訂單
+- 會員所有已取消的訂單
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1190721489696215050/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190721489696215050/image.png)
 
 ## ◆會員 訂單明細
+- 會員訂單明細，可察看商品數量、總金額及小計 (與會員相關的訂單)
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1190722792744828948/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190722792744828948/image.png)
 
 ## ◆會員 個人檔案
+- 會員個人檔案，可修改個人基本資料(密碼、電子郵件等)、申請成為賣家等功能
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1190723458942902293/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190723458942902293/image.png)
 
 ## ◆賣家 賣家主頁
+- 賣家首頁，用於切換到賣家功能的各路由
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1191087012023906314/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191087012023906314/image.png)
 
 ## ◆賣家 商品列表
+- 賣家所新增的商品列表，可進行新增、修改、刪除、查看評論，而「查看訂單」按鈕為以該商品為主體之相關訂單列表
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1191087192991346738/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191087192991346738/image.png)
 
 ## ◆賣家 商品編輯/資訊
+- 賣家可編輯或查看商品的詳細資訊(名稱、說明、規格、庫存、分類、圖片等等)
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1191087332120608898/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191087332120608898/image.png)
 
 ## ◆賣家 商品新增
+- 賣家可新增商品的詳細資訊(名稱、說明、規格、庫存、分類、圖片等等)
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1191087456024526869/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191087456024526869/image.png)
 
 ## ◆賣家 商品評論
+- 賣家可查看該商品的所有評論(買家、內容、評價)
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1191087568524165181/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191087568524165181/image.png)
 
 ## ◆賣家 藍新金流設定
+- 賣家可設定藍新金流相關設定(商店ID、密鑰、IV等資訊)
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1191087854282100836/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191087854282100836/image.png)
 
 ## ◆賣家 進行中訂單
+- 賣家可查看所有進行中的訂單
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1191087984481665084/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191087984481665084/image.png)
 
 ## ◆賣家 待出貨訂單
+- 賣家可查看所有待出貨的訂單
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1191088074101362690/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191088074101362690/image.png)
 
 ## ◆賣家 已取消訂單
+- 賣家可查看所有已取消的訂單
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1191088191105667223/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191088191105667223/image.png)
 
 ## ◆賣家 訂單明細
+- 賣家訂單明細，可察看商品數量、總金額及小計 (與賣家相關的訂單)
 ![https://cdn.discordapp.com/attachments/1190706814245929090/1191088358303215637/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191088358303215637/image.png)
 
 # 系統的主要功能與負責的同學
