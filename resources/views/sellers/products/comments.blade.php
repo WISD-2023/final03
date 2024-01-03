@@ -15,6 +15,7 @@
                             <th scope="col">#</th>
                             <th scope="col">買家</th>
                             <th scope="col">內容</th>
+                            <th scope="col">更新時間</th>
                             <th scope="col">評價</th>
                         </tr>
                         </thead>
@@ -24,6 +25,7 @@
                                 <th scope="row">{{$comment->id}}</th>
                                 <td>{{$comment->user->name}}</td>
                                 <td>{{$comment->description}}</td>
+                                <td>{{$comment->updated_at}}</td>
                                 <td>{{$comment->like_score}} / 5</td>
                             </tr>
                         @endforeach
