@@ -54,7 +54,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="container w-100">
+			<div class="container w-100 mt-4">
 				<div><h3>評論區</h3></div>
 				<div class="card p-2 m-overflow">
 					<!-- 使用者評論 -->
@@ -72,7 +72,7 @@
 			@if($canLeaveComment)
 				<!-- 2-6-14 -->
 				<!-- 曾經購買過的才能評論 -->
-				<div class="container w-100 mt-2">
+				<div class="container w-100 mt-4">
 					<div><h3>留下你的評論</h3></div>
 					<div class="card p-2">
 						<!-- 留言評論 -->
