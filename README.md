@@ -211,6 +211,10 @@ artisan db:seed
 
 > [!IMPORTANT]
 > 如果你有使用 proxy 來代理laravel專案，需要在 ``app\Http\Middleware\TrustProxies.php`` 中加入你的上游 proxy IP，否則會出現 Mixed Content 錯誤。
+## 系統展示站台
+- [主站台-Apache](https://laravel.snkms.com):[3B032117 吳宇翰](https://github.com/3B032117)
+- [副站台-Nginx-Proxy-Nginx](https://laravel.snkms.com):[3B032110 劉軒宏](https://github.com/3B032110)
+
 ## 系統開發人員與工作分配
 
 - [3B032117 吳宇翰](https://github.com/3B032117)
