@@ -153,7 +153,7 @@ class ProductController extends Controller
         // $product->category->products()->get()
         $data = [
             'approxProduct' => $product->name,
-            'products' => $product->category->products()->get(),
+            'products' => $product->category->products()->where('is_display','1')->get(),
             'cart_items_amount'=>$cartItemsAmount,
         ];
         return view('products.approx', $data);
