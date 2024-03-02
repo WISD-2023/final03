@@ -2,80 +2,89 @@
 
 ## ◆訪客/會員 首頁
 - 購物網站首頁、商品列表及登入按鈕
-![https://cdn.discordapp.com/attachments/1190706814245929090/1190706817634947112/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190706817634947112/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/b6291775-1fdc-47f6-82f9-2ccac02b5635)
+
 
 ## ◆訪客/會員 查看商品資訊
 - 商品詳細資訊，包含賣家、分類、庫存、價格及評論，可留言的買家會再出現留言區
-![https://cdn.discordapp.com/attachments/1190706814245929090/1190707319558914088/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190707319558914088/image.png)
-![https://cdn.discordapp.com/attachments/1190706814245929090/1190707360252043324/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190707360252043324/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/1c039960-5f21-4e28-877c-fd40ef7f73be)
+![image](https://github.com/WISD-2023/final03/assets/144866586/847cf986-3a65-41eb-aa53-b72f85b02157)
+
 
 ## ◆會員 會員主頁
 - 會員首頁，用於切換到會員功能的各路由
-![https://cdn.discordapp.com/attachments/1190706814245929090/1190707762309640193/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190707762309640193/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/055efa88-9640-41c2-8378-e3bffa9c94e4)
+
 
 ## ◆會員 購物車
 - 會員商品購物車，可修改商品數量或刪除購物車商品，按下「結帳」會將購物車商品依賣家產生訂單
-![https://cdn.discordapp.com/attachments/1190706814245929090/1190719299422269530/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190719299422269530/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/6a6b6cda-cfee-4845-a6e2-3689089449d9)
+
 
 ## ◆會員 進行中訂單
 - 會員所有尚未付款的訂單，按下「前往付款」按鈕可以前往藍新金流付款頁面
-![https://cdn.discordapp.com/attachments/1190706814245929090/1190720793806643260/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190720793806643260/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/f97b11a7-0820-4b2d-a621-8b0618c68c7f)
+
 
 ## ◆會員 已完成訂單
 - 會員所有已付款的訂單
-![https://cdn.discordapp.com/attachments/1190706814245929090/1190721298930864219/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190721298930864219/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/c5ff58b0-a128-48f0-a04d-8a950a59393f)
+
 
 ## ◆會員 已取消訂單
 - 會員所有已取消的訂單
-![https://cdn.discordapp.com/attachments/1190706814245929090/1190721489696215050/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190721489696215050/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/52cb3bfb-9d9d-4610-8f28-0360d1ee15ce)
+
 
 ## ◆會員 訂單明細
 - 會員訂單明細，可察看商品數量、總金額及小計 (與會員相關的訂單)
-![https://cdn.discordapp.com/attachments/1190706814245929090/1190722792744828948/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190722792744828948/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/149ebc17-6e49-4e42-af20-a1ad7d4d63f2)
 
 ## ◆會員 個人檔案
 - 會員個人檔案，可修改個人基本資料(密碼、電子郵件等)、申請成為賣家等功能
-![https://cdn.discordapp.com/attachments/1190706814245929090/1190723458942902293/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1190723458942902293/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/7704ef1f-5a81-4e5c-807a-04809fe3c06a)
 
 ## ◆賣家 賣家主頁
 - 賣家首頁，用於切換到賣家功能的各路由
-![https://cdn.discordapp.com/attachments/1190706814245929090/1191087012023906314/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191087012023906314/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/25eb8d21-414f-49d7-a3b7-6d7ff6bb35a2)
 
 ## ◆賣家 商品列表
 - 賣家所新增的商品列表，可進行新增、修改、刪除、查看評論，而「查看訂單」按鈕為以該商品為主體之相關訂單列表
-![https://cdn.discordapp.com/attachments/1190706814245929090/1191087192991346738/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191087192991346738/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/e73728b4-351c-4411-88e2-193463d8eaca)
+
 
 ## ◆賣家 商品編輯/資訊
 - 賣家可編輯或查看商品的詳細資訊(名稱、說明、規格、庫存、分類、圖片等等)
-![https://cdn.discordapp.com/attachments/1190706814245929090/1191087332120608898/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191087332120608898/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/3aef4a24-da79-41d3-8d72-ac2c083fa92f)
+
 
 ## ◆賣家 商品新增
 - 賣家可新增商品的詳細資訊(名稱、說明、規格、庫存、分類、圖片等等)
-![https://cdn.discordapp.com/attachments/1190706814245929090/1191087456024526869/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191087456024526869/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/a0a61f78-5902-475a-bb4c-c7070449ea4e)
 
 ## ◆賣家 商品評論
 - 賣家可查看該商品的所有評論(買家、內容、評價)
-![https://cdn.discordapp.com/attachments/1190706814245929090/1191087568524165181/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191087568524165181/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/7a96ba61-7bff-41b5-855b-b6cc6de80079)
 
 ## ◆賣家 藍新金流設定
 - 賣家可設定藍新金流相關設定(商店ID、密鑰、IV等資訊)
-![https://cdn.discordapp.com/attachments/1190706814245929090/1191087854282100836/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191087854282100836/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/b066c649-5a3a-4013-ba3c-ee113f9b03b9)
 
 ## ◆賣家 進行中訂單
 - 賣家可查看所有進行中的訂單
-![https://cdn.discordapp.com/attachments/1190706814245929090/1191087984481665084/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191087984481665084/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/366cfb2c-e3b3-4c62-8591-0b1f291539f7)
 
 ## ◆賣家 待出貨訂單
 - 賣家可查看所有待出貨的訂單
-![https://cdn.discordapp.com/attachments/1190706814245929090/1191088074101362690/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191088074101362690/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/63ba7824-3e68-4ed5-94cb-97116f70d702)
 
 ## ◆賣家 已取消訂單
 - 賣家可查看所有已取消的訂單
-![https://cdn.discordapp.com/attachments/1190706814245929090/1191088191105667223/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191088191105667223/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/9154f027-747b-484a-a5aa-649ec8d97361)
 
 ## ◆賣家 訂單明細
 - 賣家訂單明細，可察看商品數量、總金額及小計 (與賣家相關的訂單)
-![https://cdn.discordapp.com/attachments/1190706814245929090/1191088358303215637/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191088358303215637/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/d07ddbf6-634a-4ea5-983c-a91009ab7ad9)
 
 # 系統的主要功能與負責的同學
 ★ 商品
@@ -131,35 +140,35 @@
 ★ Model 關聯 [3B032117 吳宇翰](https://github.com/3B032117)
 
 ## ERD
-![https://media.discordapp.net/attachments/1190706814245929090/1191088885690794114/ERD.png](https://media.discordapp.net/attachments/1190706814245929090/1191088885690794114/ERD.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/d4f152cd-723e-4437-8bf2-48d5001081be)
 
 ## 關聯式綱要圖
-![https://cdn.discordapp.com/attachments/1190706814245929090/1191088886521274518/scama.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191088886521274518/scama.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/66383dac-2383-4f93-8539-6124792ac33a)
 
 ## 實際資料表欄位設計
 ★ 會員 users <br/>
-![https://cdn.discordapp.com/attachments/1190706814245929090/1191089106797740132/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191089106797740132/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/aa2a4062-fffa-4c28-8672-52734d8db486)
 
 ★ 賣家 sellers <br/>
-![https://cdn.discordapp.com/attachments/1190706814245929090/1191089346288287815/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191089346288287815/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/f743570a-76e3-4c94-ae66-3d5a3090b41d)
 
 ★ 訂單 orders <br/>
-![https://cdn.discordapp.com/attachments/1190706814245929090/1191089495794270259/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191089495794270259/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/52553391-41ea-4e92-b26d-47d171b9c984)
 
 ★ 訂單明細 order_details <br/>
-![https://cdn.discordapp.com/attachments/1190706814245929090/1191089696047108267/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191089696047108267/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/9fc7e4a2-ee03-4dd1-aeca-ee7494b0c424)
 
 ★ 商品 products <br/>
-![https://cdn.discordapp.com/attachments/1190706814245929090/1191089820630532148/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191089820630532148/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/5aa2f49a-8aa1-44a4-905c-72106e2c0621)
 
 ★ 商品種類 categoies <br/>
-![https://cdn.discordapp.com/attachments/1190706814245929090/1191089996665458819/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191089996665458819/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/892f393c-9b2f-4d75-b5a6-2e554d89ff92)
 
 ★ 評論 comments <br/>
-![https://cdn.discordapp.com/attachments/1190706814245929090/1191090166090182746/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191090166090182746/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/a10be789-498b-4abc-975c-a3fbd13b96eb)
 
 ★ 購物車 cart_items <br/>
-![https://cdn.discordapp.com/attachments/1190706814245929090/1191090289474031686/image.png](https://cdn.discordapp.com/attachments/1190706814245929090/1191090289474031686/image.png)
+![image](https://github.com/WISD-2023/final03/assets/144866586/0246e5c7-bd69-462d-acad-b23b23c0a43a)
 
 ## 初始專案與負責資料庫的同學 
 - 初始專案 [3B032117 吳宇翰](https://github.com/3B032117)
